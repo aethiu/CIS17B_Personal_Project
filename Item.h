@@ -12,14 +12,26 @@
 
 class Item {
 public:
-    float get_price() const noexcept { return price; };
+    Item() =default;
+    Item(unsigned int sku,
+         unsigned long quantity,
+         std::string name,
+         std::string description,
+         float price);
+
+    unsigned int get_sku() const noexcept { return sku_; };
+    unsigned long get_quantity() const noexcept { return quantity_; };
+    std::string get_name() const noexcept { return name_ ;}
+    std::string get_description() const noexcept { return description_ ;}
+    float get_price() const noexcept { return price_; };
+
 private:
-    unsigned int sku = 0;
-    unsigned long stock;
-    std::string name;
-    std::string description;
-    std::string img;
-    float price = 0.0f;
+    unsigned int sku_ = 0;
+    unsigned long quantity_;
+    std::string name_;
+    std::string description_;
+    std::string img_;
+    float price_ = 0.0f;
 };
 
 #endif /* ITEM_H */

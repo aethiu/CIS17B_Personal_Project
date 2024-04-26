@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Cart.o \
 	${OBJECTDIR}/Item.o \
+	${OBJECTDIR}/ItemService.o \
 	${OBJECTDIR}/Order.o \
 	${OBJECTDIR}/User.o \
 	${OBJECTDIR}/main.o
@@ -75,6 +76,11 @@ ${OBJECTDIR}/Item.o: Item.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Item.o Item.cpp
+
+${OBJECTDIR}/ItemService.o: ItemService.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ItemService.o ItemService.cpp
 
 ${OBJECTDIR}/Order.o: Order.cpp
 	${MKDIR} -p ${OBJECTDIR}

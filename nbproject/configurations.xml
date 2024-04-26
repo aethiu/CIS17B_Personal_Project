@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>Cart.h</itemPath>
       <itemPath>Item.h</itemPath>
+      <itemPath>ItemService.h</itemPath>
       <itemPath>Order.h</itemPath>
       <itemPath>User.h</itemPath>
     </logicalFolder>
@@ -18,6 +19,7 @@
                    projectFiles="true">
       <itemPath>Cart.cpp</itemPath>
       <itemPath>Item.cpp</itemPath>
+      <itemPath>ItemService.cpp</itemPath>
       <itemPath>Order.cpp</itemPath>
       <itemPath>User.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -51,6 +53,10 @@
       <item path="Item.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Item.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ItemService.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ItemService.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Order.cpp" ex="false" tool="0" flavor2="0">
       </item>
@@ -90,6 +96,10 @@
       <item path="Item.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Item.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ItemService.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ItemService.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Order.cpp" ex="false" tool="0" flavor2="0">
       </item>
