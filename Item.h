@@ -12,6 +12,7 @@
 
 class Item {
 public:
+    float get_price() const noexcept { return price; };
 private:
     unsigned int sku = 0;
     unsigned long stock;

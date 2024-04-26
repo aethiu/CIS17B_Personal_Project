@@ -4,7 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Cart.h</itemPath>
       <itemPath>Item.h</itemPath>
+      <itemPath>Order.h</itemPath>
+      <itemPath>User.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -13,7 +16,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Cart.cpp</itemPath>
       <itemPath>Item.cpp</itemPath>
+      <itemPath>Order.cpp</itemPath>
+      <itemPath>User.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -38,9 +44,21 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Cart.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Cart.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Item.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Item.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Order.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Order.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="User.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="User.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -65,9 +83,21 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Cart.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Cart.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Item.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Item.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Order.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Order.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="User.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="User.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

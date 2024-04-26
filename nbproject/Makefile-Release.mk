@@ -35,7 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Cart.o \
 	${OBJECTDIR}/Item.o \
+	${OBJECTDIR}/Order.o \
+	${OBJECTDIR}/User.o \
 	${OBJECTDIR}/main.o
 
 
@@ -63,10 +66,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/shopping_cart: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/shopping_cart ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/Cart.o: Cart.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cart.o Cart.cpp
+
 ${OBJECTDIR}/Item.o: Item.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Item.o Item.cpp
+
+${OBJECTDIR}/Order.o: Order.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Order.o Order.cpp
+
+${OBJECTDIR}/User.o: User.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/User.o User.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
