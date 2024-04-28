@@ -7,34 +7,27 @@
 
 #include "Cart.h"
 
-void Cart::add_item(Item* item) {
-    items_[item->get_sku()]++;
-    update_total();
+Cart::Cart(ItemService *item_service) : item_service_(item_service) { }
+
+void Cart::add_item(const Item* item) {
+    items_.push_back(item);
 }
 
-void Cart::remove_item(const Item* item) {
-    if (items_.count(item->get_sku()) == 0) return; // Item not in cart
-    if (items_[item->get_sku()] == 1) {
-        items_.erase(item->get_sku()); // Remove from cart
-    } else {
-        items_[item->get_sku()] -= 1; // Decrement quantity in cart
+const Item* Cart::remove_item(const Item* item) {
+    for (auto i=items_.begin(); i != items_.end(); i++) {
+        if ((*i)->get_sku() == item->get_sku()) {
+            const Item* removed = *i;
+            items_.erase(i);
+            return removed;
+        }
     }
+    return nullptr;
 }
 
-Item** Cart::get_items() const {
-    size_t size = items_.size();
-    Item **items = new Item*[size];
-    size_t i = 0;
-    for (const auto& [sku, quantity] : items_) {
-        items[i++] = item_service_->get_item(sku);
+float Cart::get_subtotal() {
+    float subtotal = 0.0f;
+    for (const auto& item : items_) {
+        subtotal += item->get_price();
     }
-    return items;
-}
-
-void Cart::update_total() {
-    float subtotal=0;
-    for (const auto& [sku, quantity] : items_) {
-        subtotal_ += item_service_->get_item(sku)->get_price() * quantity;
-    }
-    subtotal_ = subtotal;
+    return subtotal;
 }

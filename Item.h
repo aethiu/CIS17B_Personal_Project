@@ -27,7 +27,7 @@ public:
 
 private:
     unsigned int sku_ = 0;
-    unsigned long quantity_;
+    unsigned long quantity_ = 0;
     std::string name_;
     std::string description_;
     std::string img_;

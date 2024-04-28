@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     };
     ItemService service(items, 2);
     Cart cart(&service);
-    auto print_items = [](Item **items, size_t size){
+    auto print_items = [](const std::vector<const Item*>& items, size_t size){
         for (size_t i=0; i<size; i++) {
             cout << "Name: " << items[i]->get_name() << endl;
             cout << "Description: " << items[i]->get_description() << endl;
@@ -32,13 +32,13 @@ int main(int argc, char** argv) {
 
     cout << "Cart:\n";
     cart.add_item(service.get_item(1));
-    print_items(cart.get_items(), cart.get_total_items());
+    print_items(cart.get_items(), cart.get_num_items());
     cout << "\nAdd item:\n";
     cart.add_item(service.get_item(2));
-    print_items(cart.get_items(), cart.get_total_items());
+    print_items(cart.get_items(), cart.get_num_items());
     cout << "\nRemove item:\n";
     cart.remove_item(items[1]);
-    print_items(cart.get_items(), cart.get_total_items());
+    print_items(cart.get_items(), cart.get_num_items());
 
     return 0;
 }
