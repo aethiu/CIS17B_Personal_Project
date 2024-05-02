@@ -10,16 +10,20 @@
 
 #include "Item.h"
 
+#include <vector>
+
 class ItemService {
 public:
     ItemService() =default;
-    ItemService(Item** items, size_t size) : items_(items), num_items_(size) { }
     virtual ~ItemService() =default;
     virtual Item* get_item(unsigned int sku) const;
+    virtual void add_item(Item *item);
+
 protected:
     size_t num_items_ = 0;
+
 private:
-    Item **items_;
+    std::vector<Item*> items_;
 };
 
 #endif /* ITEMSERVICE_H */

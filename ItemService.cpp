@@ -13,3 +13,8 @@ Item* ItemService::get_item(unsigned int sku) const {
     }
     return nullptr;
 }
+
+void ItemService::add_item(Item *item) {
+    items_.push_back(item);
+    num_items_ = items_.size();
+}

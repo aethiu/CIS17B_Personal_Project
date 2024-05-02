@@ -4,11 +4,16 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>App.h</itemPath>
       <itemPath>Cart.h</itemPath>
+      <itemPath>Controller.h</itemPath>
       <itemPath>Item.h</itemPath>
       <itemPath>ItemService.h</itemPath>
       <itemPath>Order.h</itemPath>
+      <itemPath>ServiceManager.h</itemPath>
       <itemPath>User.h</itemPath>
+      <itemPath>UserService.h</itemPath>
+      <itemPath>View.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -17,11 +22,16 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>App.cpp</itemPath>
       <itemPath>Cart.cpp</itemPath>
+      <itemPath>Controller.cpp</itemPath>
       <itemPath>Item.cpp</itemPath>
       <itemPath>ItemService.cpp</itemPath>
       <itemPath>Order.cpp</itemPath>
+      <itemPath>ServiceManager.cpp</itemPath>
       <itemPath>User.cpp</itemPath>
+      <itemPath>UserService.cpp</itemPath>
+      <itemPath>View.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -46,9 +56,17 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="App.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="App.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Cart.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Cart.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Controller.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Controller.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Item.cpp" ex="false" tool="0" flavor2="0">
       </item>
@@ -62,9 +80,21 @@
       </item>
       <item path="Order.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ServiceManager.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ServiceManager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="User.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="User.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UserService.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="UserService.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="View.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="View.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -89,9 +119,17 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="App.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="App.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Cart.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Cart.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Controller.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Controller.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Item.cpp" ex="false" tool="0" flavor2="0">
       </item>
@@ -105,9 +143,21 @@
       </item>
       <item path="Order.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ServiceManager.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ServiceManager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="User.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="User.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UserService.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="UserService.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="View.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="View.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

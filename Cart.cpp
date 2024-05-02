@@ -7,7 +7,7 @@
 
 #include "Cart.h"
 
-Cart::Cart(ItemService *item_service) : item_service_(item_service) { }
+Cart::Cart(ItemService &item_service) : item_service_(&item_service) { }
 
 void Cart::add_item(const Item* item) {
     items_.push_back(item);

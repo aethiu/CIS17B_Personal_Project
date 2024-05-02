@@ -13,7 +13,7 @@
 
 class Order {
 public:
-    Order(const Cart *cart, const User *user);
+    Order(const Cart &cart, const User &user);
 private:
     static constexpr float tax_rate_ = 0.07f;
     static constexpr float shipping_cost = 10.00f;

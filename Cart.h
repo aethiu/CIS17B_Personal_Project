@@ -14,7 +14,7 @@
 
 class Cart {
 public:
-    Cart(ItemService *item_service);
+    Cart(ItemService &item_service);
 
     void add_item(const Item* item);
     const Item* remove_item(const Item* item);

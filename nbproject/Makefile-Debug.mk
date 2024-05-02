@@ -35,11 +35,16 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/App.o \
 	${OBJECTDIR}/Cart.o \
+	${OBJECTDIR}/Controller.o \
 	${OBJECTDIR}/Item.o \
 	${OBJECTDIR}/ItemService.o \
 	${OBJECTDIR}/Order.o \
+	${OBJECTDIR}/ServiceManager.o \
 	${OBJECTDIR}/User.o \
+	${OBJECTDIR}/UserService.o \
+	${OBJECTDIR}/View.o \
 	${OBJECTDIR}/main.o
 
 
@@ -67,10 +72,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/shopping_cart: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/shopping_cart ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/App.o: App.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App.o App.cpp
+
 ${OBJECTDIR}/Cart.o: Cart.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cart.o Cart.cpp
+
+${OBJECTDIR}/Controller.o: Controller.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Controller.o Controller.cpp
 
 ${OBJECTDIR}/Item.o: Item.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -87,10 +102,25 @@ ${OBJECTDIR}/Order.o: Order.cpp
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Order.o Order.cpp
 
+${OBJECTDIR}/ServiceManager.o: ServiceManager.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ServiceManager.o ServiceManager.cpp
+
 ${OBJECTDIR}/User.o: User.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/User.o User.cpp
+
+${OBJECTDIR}/UserService.o: UserService.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UserService.o UserService.cpp
+
+${OBJECTDIR}/View.o: View.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/View.o View.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
