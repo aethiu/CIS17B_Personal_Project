@@ -26,17 +26,17 @@ public:
         // TODO this is a mock implementation
         return true;
     }
-    void register_user(std::string username, std::string password);
+    const User* register_user(std::string username, std::string password);
     void add_to_cart(const Item *item) { cart_.add_item(item); }
     const Order* create_order() noexcept;
     void submit_order() { }
 
     ServiceManager& get_service_manager() noexcept { return *service_manager_; };
-    Order* get_order() { return order_; }
-    const Cart& get_cart() { return cart_; }
-    User* get_current_user() { return current_user_; }
+    const Order* get_order() const { return order_; }
+    const Cart& get_cart() const { return cart_; }
+    const User* get_current_user() const { return current_user_; }
 
-    bool is_logged_in() const noexcept { return true; }
+    bool is_logged_in() const noexcept { return current_user_ != nullptr; }
 private:
     ServiceManager *service_manager_;
     // TODO this is a mock implementation

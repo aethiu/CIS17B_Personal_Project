@@ -20,7 +20,8 @@ public:
     UserRepository(std::string db_filename) : Repository(db_filename) { load(); }
 
     void create_user(const User& user);
-    const User& read_user(unsigned int id) const;
+    const User* read_user(unsigned int id) const;
+    const User* read_user(std::string username) const;
     void update_user(unsigned int id, const User& user);
     void delete_user(unsigned int id);
 

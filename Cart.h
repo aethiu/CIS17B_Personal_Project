@@ -16,18 +16,18 @@ class Cart {
 public:
     Cart(ItemService &item_service);
 
-    /** \brief Adds and item to the cart.
+    /** \brief Adds an item to the cart.
      *
      * Returns immediately if item is nullptr.
      * @param item Item to add to the cart
      */
     void add_item(const Item* item);
 
-    /** \brief Removes and item from the cart.
+    /** \brief Removes an item from the cart.
      *
      * Returns nullptr if item is not in the cart.
      * @param item Item to remove from the cart
-     * @return Removed item or nullptr
+     * @return Removed item or nullptr if no item was removed
      */
     const Item* remove_item(const Item* item);
 

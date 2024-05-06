@@ -10,6 +10,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 #include "Item.h"
 #include "Repository.h"
@@ -21,6 +22,7 @@ public:
 
   void create_item(const Item& item);
   const Item* read_item(unsigned int sku) const;
+  std::vector<const Item*> read_all_items() const;
   void update_item(unsigned int sku, const Item& item);
   void delete_item(unsigned int sku);
 

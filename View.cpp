@@ -93,7 +93,7 @@ void View::catalog_state() {
             << std::setw(8) << "Price"
             << std::setw(64) << "Description"
             << std::endl;
-  auto& items = controller_.get_service_manager().get_item_service()->get_items();
+  auto items = controller_.get_service_manager().get_item_service()->get_all_items();
   for (const auto& item : items) {
     std::cout << std::setw(8) << item->get_sku()
               << std::setw(24) << item->get_name()

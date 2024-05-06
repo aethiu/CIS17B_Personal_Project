@@ -25,6 +25,14 @@ const Item* ItemRepository::read_item(unsigned int sku) const {
   return it == items_.end() ? nullptr : &(it->second);
 }
 
+std::vector<const Item *> ItemRepository::read_all_items() const {
+  std::vector<const Item*> items;
+  for (const auto& [sku, item] : items_){
+    items.push_back(&item);
+  }
+  return items;
+}
+
 void ItemRepository::update_item(unsigned int sku, const Item& item) {
   if (items_.count(sku) != 0) {
     items_[sku] = item;

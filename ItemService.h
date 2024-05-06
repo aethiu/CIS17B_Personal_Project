@@ -15,20 +15,20 @@
 
 class ItemService {
 public:
-    ItemService();
-//    ItemService(ItemRepository &repo) : repo_(repo) { }
-    virtual ~ItemService() =default;
-    virtual const std::vector<Item*>& get_items() noexcept { return items_; };
-    virtual Item* get_item(unsigned int sku) const;
-//    virtual const Item* get_item(unsigned int sku) const { return repo_.read_item(sku); }
-    virtual void add_item(Item *item);
+    ItemService(ItemRepository &repo) : repo_(repo) { }
 
-protected:
-  size_t num_items_ = 0;
+    /** \brief Returns an array of all the items in the catalog
+     *
+     * @return vector of items
+     */
+    std::vector<const Item*> get_all_items() const { return std::move(repo_.read_all_items()); }
+
+    const Item* get_item(unsigned int sku) const { return repo_.read_item(sku); }
+
+    void add_item(const Item &item);
 
 private:
-//    ItemRepository& repo_;
-    std::vector<Item*> items_;
+    ItemRepository& repo_;
 };
 
 #endif /* ITEMSERVICE_H */

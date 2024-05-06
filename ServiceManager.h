@@ -15,16 +15,17 @@
 class ServiceManager {
 public:
     static ServiceManager& instance() {
-        static ServiceManager instance;
+        static ServiceManager instance("item_db.bin");
         return instance;
     }
 private:
-    ServiceManager() =default;
+    ServiceManager(std::string item_db_filename) : item_repo_{item_db_filename}, item_service_{item_repo_} { }
 
 public:
     UserService* get_user_service() { return &user_service_; }
     ItemService* get_item_service() { return &item_service_; }
 private:
+    ItemRepository item_repo_;
     UserService user_service_;
     ItemService item_service_;
 };
