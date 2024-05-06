@@ -12,46 +12,6 @@
 #include <iostream>
 
 int main(int argc, char** argv) {
-
-    /* Repository test */
-    // Note that these tests don't check the binary file being modified by the repo
-    ItemRepository repo("item_db.bin");
-
-    // Create/Read
-    Item item(5, 1, 1.99, "New Item", "New Item Desc)"),
-        item2(6, 5, 2.99, "New Item 2", "New Item 2 Description"),
-        item3(7, 5, 3.99, "New Item 3", "New Item 3 Description"),
-        item4(8, 5, 4.99, "New Item 4", "New Item 4 Description");
-    repo.create_item(item);
-    repo.create_item(item2);
-    repo.create_item(item3);
-    repo.create_item(item4);
-    const Item* read_item = repo.read_item(item.get_sku());
-    if (read_item->get_sku() == item.get_sku()) {
-      std::cout << "Create test passed\n";
-    } else {
-      std::cout << "Create test failed\n";
-    }
-
-    // Update
-    item.set_price(200.0);
-    repo.update_item(item.get_sku(), item);
-    read_item = repo.read_item(item.get_sku());
-    if (read_item->get_price() == 200.0) {
-      std::cout << "Update test passed\n";
-    } else {
-      std::cout << "Update test failed\n";
-    }
-
-    // Delete
-    repo.delete_item(item.get_sku());
-    read_item = repo.read_item(item.get_sku());
-    if (!read_item) {
-      std::cout << "Delete test passed\n";
-    } else {
-      std::cout << "Delete test failed\n";
-    }
-
     App app {ServiceManager::instance()};
 
     app.run();
