@@ -46,9 +46,13 @@ void ItemRepository::load() {
   std::fstream db(db_filename_, std::ios::in | std::ios::binary);
   if (!db) { throw new db_exception; }
   db.seekg(0, std::ios::beg);
+  items_.clear();
+
+  // Read header
   size_t num_items = 0;
   db.read(reinterpret_cast<char*>(&num_items), sizeof(num_items));
-  items_.clear();
+
+  // Read items
   unsigned int sku = 0;
   unsigned long quantity = 0;
   float price = 0;
@@ -62,7 +66,6 @@ void ItemRepository::load() {
     std::getline(db, img, '\0');
     items_.try_emplace(sku, sku, quantity, price, name, description);
   }
-  std::cout << "Items: " << items_.size() << std::endl;
   db.close();
 }
 
@@ -70,8 +73,11 @@ void ItemRepository::save() const {
   std::fstream db(db_filename_, std::ios::out | std::ios::binary);
   if (!db) { throw new db_exception; }
   db.seekp(0, std::ios::beg);
+
+  // Write header
   size_t num_items = items_.size();
   db.write(reinterpret_cast<char*>(&num_items), sizeof(num_items));
+  // Write items
   for (const auto& [_, item] : items_) {
     unsigned int sku = item.get_sku();
     unsigned long quantity = item.get_quantity();

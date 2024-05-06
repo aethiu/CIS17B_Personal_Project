@@ -8,11 +8,27 @@
 #ifndef USERREPOSITORY_H
 #define USERREPOSITORY_H
 
-class UserRepository {
-public:
-    
-private:
+#include "Repository.h"
 
+#include "User.h"
+
+#include <vector>
+
+class UserRepository : public Repository {
+public:
+    UserRepository() =default;
+    UserRepository(std::string db_filename) : Repository(db_filename) { load(); }
+
+    void create_user(const User& user);
+    const User& read_user(unsigned int id) const;
+    void update_user(unsigned int id, const User& user);
+    void delete_user(unsigned int id);
+
+private:
+    void load() override;
+    void save() const override;
+
+    std::vector<User> users_;
 };
 
 #endif /* USERREPOSITORY_H */

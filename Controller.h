@@ -13,15 +13,15 @@
 
 class Controller {
 public:
-    Controller(ServiceManager &service_manager) : service_manager_(&service_manager) { }
+    Controller(ServiceManager &service_manager) : service_manager_(&service_manager), cart_(*service_manager.get_item_service()) { }
     bool login_user(std::string username, std::string password) {
         // TODO this is a mock implementation
-        static User user(*service_manager_->get_item_service(), "test", "test", true);
+        static User user(1, true, "test", "test");
         current_user_ = &user;
         return true;
     }
     void register_user(std::string username, std::string password);
-    void add_to_cart(Cart *cart, const Item *item) { cart->add_item(item); }
+    void add_to_cart(const Item *item) { cart_.add_item(item); }
     void create_order();
     void submit_order();
 
@@ -29,6 +29,7 @@ public:
 private:
     ServiceManager *service_manager_;
     User* current_user_;
+    Cart cart_;
 };
 
 #endif /* CONTROLLER_H */

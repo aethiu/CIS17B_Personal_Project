@@ -9,21 +9,19 @@
 #define ITEMSERVICE_H
 
 #include "Item.h"
+#include "ItemRepository.h"
 
 #include <vector>
 
 class ItemService {
 public:
-    ItemService() =default;
+    ItemService(ItemRepository& repo) : repo_(repo);
     virtual ~ItemService() =default;
-    virtual Item* get_item(unsigned int sku) const;
+    virtual const Item* get_item(unsigned int sku) const { return repo_.read_item(sku); }
     virtual void add_item(Item *item);
 
-protected:
-    size_t num_items_ = 0;
-
 private:
-    std::vector<Item*> items_;
+    ItemRepository& repo_;
 };
 
 #endif /* ITEMSERVICE_H */

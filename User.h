@@ -15,16 +15,18 @@
 
 class User {
 public:
-    User(ItemService &item_service, std::string username, std::string password, bool is_admin)
-        : cart_{item_service}, username_(std::move(username)), password_(std::move(password)), is_admin_(is_admin) { }
+    User(unsigned int id, bool is_admin, std::string username, std::string password)
+        : id_(id), username_(std::move(username)), password_(std::move(password)), is_admin_(is_admin) { }
+
+    bool is_admin() const noexcept { return is_admin_; }
+    unsigned int get_id() const noexcept { return id_; }
     const std::string& get_username() const noexcept { return username_; }
-    Cart& get_cart() noexcept { return cart_; }
+    const std::string& get_password() const noexcept { return password_; }
 private:
     unsigned int id_ = 0;
     bool is_admin_ = false;
     std::string username_;
     std::string password_;
-    Cart cart_;
 };
 
 #endif /* USER_H */
