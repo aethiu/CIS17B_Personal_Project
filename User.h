@@ -11,8 +11,6 @@
 #include <string>
 #include <utility>
 
-#include "Cart.h"
-
 class User {
 public:
     User(unsigned int id, bool is_admin, std::string username, std::string password)

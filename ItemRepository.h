@@ -12,8 +12,6 @@
 #include <unordered_map>
 
 #include "Item.h"
-#include "Order.h"
-#include "User.h"
 #include "Repository.h"
 
 class ItemRepository : public Repository {
