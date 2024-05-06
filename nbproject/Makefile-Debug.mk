@@ -39,8 +39,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/Cart.o \
 	${OBJECTDIR}/Controller.o \
 	${OBJECTDIR}/Item.o \
+	${OBJECTDIR}/ItemRepository.o \
 	${OBJECTDIR}/ItemService.o \
 	${OBJECTDIR}/Order.o \
+	${OBJECTDIR}/Repository.o \
 	${OBJECTDIR}/ServiceManager.o \
 	${OBJECTDIR}/User.o \
 	${OBJECTDIR}/UserService.o \
@@ -92,6 +94,11 @@ ${OBJECTDIR}/Item.o: Item.cpp
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Item.o Item.cpp
 
+${OBJECTDIR}/ItemRepository.o: ItemRepository.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ItemRepository.o ItemRepository.cpp
+
 ${OBJECTDIR}/ItemService.o: ItemService.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -101,6 +108,11 @@ ${OBJECTDIR}/Order.o: Order.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Order.o Order.cpp
+
+${OBJECTDIR}/Repository.o: Repository.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Repository.o Repository.cpp
 
 ${OBJECTDIR}/ServiceManager.o: ServiceManager.cpp
 	${MKDIR} -p ${OBJECTDIR}

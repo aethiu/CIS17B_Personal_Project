@@ -15,23 +15,31 @@ public:
     Item() =default;
     Item(unsigned int sku,
          unsigned long quantity,
+         float price,
          std::string name,
-         std::string description,
-         float price);
+         std::string description);
 
     unsigned int get_sku() const noexcept { return sku_; };
     unsigned long get_quantity() const noexcept { return quantity_; };
-    std::string get_name() const noexcept { return name_ ;}
-    std::string get_description() const noexcept { return description_ ;}
     float get_price() const noexcept { return price_; };
+    const std::string& get_name() const noexcept { return name_ ;}
+    const std::string& get_description() const noexcept { return description_ ;}
+    const std::string& get_img() const noexcept { return img_; }
+
+    void set_sku(unsigned int sku) noexcept { sku_ = sku; }
+    void set_quantity(unsigned long quantity) noexcept { quantity_ = quantity; }
+    void set_price(float price) noexcept { price_ = price; }
+    void set_name(std::string& name) noexcept { name_ = name; }
+    void set_description(std::string& description) noexcept { description_ = description; }
+    void set_img(std::string& img) noexcept { img_ = img; }
 
 private:
     unsigned int sku_ = 0;
     unsigned long quantity_ = 0;
+  float price_ = 0.0f;
     std::string name_;
     std::string description_;
     std::string img_;
-    float price_ = 0.0f;
 };
 
 #endif /* ITEM_H */

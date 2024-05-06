@@ -9,13 +9,13 @@
 
 Item::Item(unsigned int sku,
            unsigned long quantity,
+           float price,
            std::string name,
-           std::string description,
-           float price)
+           std::string description)
            : sku_(sku),
            quantity_(quantity),
            name_(name),
            description_(description),
-           img_(std::to_string(sku)),
+           img_("items/"+std::to_string(sku)+".jpg"),
            price_(price) {
 }
