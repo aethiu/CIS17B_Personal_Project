@@ -45,6 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Repository.o \
 	${OBJECTDIR}/ServiceManager.o \
 	${OBJECTDIR}/User.o \
+	${OBJECTDIR}/UserRepository.o \
 	${OBJECTDIR}/UserService.o \
 	${OBJECTDIR}/View.o \
 	${OBJECTDIR}/main.o
@@ -123,6 +124,11 @@ ${OBJECTDIR}/User.o: User.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/User.o User.cpp
+
+${OBJECTDIR}/UserRepository.o: UserRepository.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UserRepository.o UserRepository.cpp
 
 ${OBJECTDIR}/UserService.o: UserService.cpp
 	${MKDIR} -p ${OBJECTDIR}

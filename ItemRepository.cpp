@@ -60,7 +60,9 @@ void ItemRepository::load() {
     std::getline(db, name, '\0');
     std::getline(db, description, '\0');
     std::getline(db, img, '\0');
+    items_.try_emplace(sku, sku, quantity, price, name, description);
   }
+  std::cout << "Items: " << items_.size() << std::endl;
   db.close();
 }
 

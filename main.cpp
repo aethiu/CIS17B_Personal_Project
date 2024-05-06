@@ -9,21 +9,19 @@
 
 #include "ItemRepository.h"
 
-#include <filesystem>
 #include <iostream>
 
 int main(int argc, char** argv) {
 
     /* Repository test */
     // Note that these tests don't check the binary file being modified by the repo
-    
     ItemRepository repo("item_db.bin");
 
     // Create/Read
-    Item item(1, 1, 1.99, "New Item", "New Item Desc)"),
-        item2(2, 5, 2.99, "New Item 2", "New Item 2 Description"),
-        item3(3, 5, 3.99, "New Item 3", "New Item 3 Description"),
-        item4(4, 5, 4.99, "New Item 4", "New Item 4 Description");
+    Item item(5, 1, 1.99, "New Item", "New Item Desc)"),
+        item2(6, 5, 2.99, "New Item 2", "New Item 2 Description"),
+        item3(7, 5, 3.99, "New Item 3", "New Item 3 Description"),
+        item4(8, 5, 4.99, "New Item 4", "New Item 4 Description");
     repo.create_item(item);
     repo.create_item(item2);
     repo.create_item(item3);
