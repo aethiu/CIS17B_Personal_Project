@@ -17,6 +17,8 @@ public:
 private:
     Controller *controller_ ;
 
+    bool exit_ = false;
+
     enum MenuState {
         MAIN,
         LOGIN,
@@ -28,8 +30,6 @@ private:
         EXIT
     } state_ = MenuState::MAIN;
 
-    bool exit_ = false;
-
     void menu_state();
     void login_state();
     void register_state();
@@ -37,6 +37,8 @@ private:
     void cart_state();
     void checkout_state();
     void admin_state();
+
+    void print_cart() const noexcept;
 };
 
 #endif /* VIEW_H */

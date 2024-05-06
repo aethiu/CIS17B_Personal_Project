@@ -6,3 +6,8 @@
  */
 
 #include "Controller.h"
+
+const Order& Controller::create_order() noexcept {
+  order_ = new Order(*current_user_);
+  return *order_;
+}

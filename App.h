@@ -13,11 +13,11 @@
 
 class App {
 public:
-    App(ServiceManager &service_manager) : controller_{service_manager} { }
+    App(ServiceManager &service_manager) : controller_{service_manager}, view_{controller_} { }
     void run();
 private:
     Controller controller_;
-    View view_{controller_};
+    View view_;
 };
 
 #endif /* APP_H */

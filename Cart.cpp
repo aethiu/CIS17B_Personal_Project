@@ -10,6 +10,7 @@
 Cart::Cart(ItemService &item_service) : item_service_(&item_service) { }
 
 void Cart::add_item(const Item* item) {
+    if (item == nullptr) return;
     items_.push_back(item);
 }
 
@@ -24,7 +25,7 @@ const Item* Cart::remove_item(const Item* item) {
     return nullptr;
 }
 
-float Cart::get_subtotal() {
+float Cart::get_subtotal() const noexcept {
     float subtotal = 0.0f;
     for (const auto& item : items_) {
         subtotal += item->get_price();
