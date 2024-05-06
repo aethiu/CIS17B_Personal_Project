@@ -11,70 +11,66 @@
 #include <fstream>
 #include <iostream>
 
-ItemRepository::ItemRepository(std::string db_file) : db_filename_(db_file) {
+ItemRepository::ItemRepository(std::string db_filename) : Repository(db_filename) {
   load();
 }
 
 void ItemRepository::create_item(const Item& item) {
-  items_.emplace_back(item);
+  items_.insert({item.get_sku(), item});
   save();
 }
 
 const Item* ItemRepository::read_item(unsigned int sku) const {
-  auto it = std::find_if(items_.begin(), items_.end(), [&](const auto &item) {
-    return item.get_sku() == sku;
-  });
-  return it == items_.end() ? nullptr : &(*it);
+  auto it = items_.find(sku);
+  return it == items_.end() ? nullptr : &(it->second);
 }
 
 void ItemRepository::update_item(unsigned int sku, const Item& item) {
-  for (auto& i : items_) {
-    if (i.get_sku() == sku) {
-      i = item;
-      return;
+  if (items_.count(sku) != 0) {
+    items_[sku] = item;
+    if (sku != item.get_sku()) {
+      // Move value to new key to avoid invalidating pointers returned by read_item()
+      items_.insert({item.get_sku(), std::move(items_[sku])});
     }
+  } else {
+    create_item(item);
   }
-  create_item(item);
 }
 
 void ItemRepository::delete_item(unsigned int sku) {
-  items_.erase(std::remove_if(items_.begin(), items_.end(), [&](const auto &item) {
-    return item.get_sku() == sku;
-  }));
+  items_.erase(sku);
   save();
 }
 
 void ItemRepository::load() {
   std::fstream db(db_filename_, std::ios::in | std::ios::binary);
-  if (!db) { std::cerr << "Could not open binary file\n"; }
+  if (!db) { throw new db_exception; }
   db.seekg(0, std::ios::beg);
   size_t num_items = 0;
   db.read(reinterpret_cast<char*>(&num_items), sizeof(num_items));
-  if (db) {
-    items_.clear();
-    unsigned int sku = 0;
-    unsigned long quantity = 0;
-    float price = 0;
-    std::string name, description, img;
-    for (size_t i = 0; i < num_items; i++) {
-      db.read(reinterpret_cast<char*>(&sku), sizeof(sku));
-      db.read(reinterpret_cast<char*>(&quantity), sizeof(quantity));
-      db.read(reinterpret_cast<char*>(&price), sizeof(price));
-      std::getline(db, name, '\0');
-      std::getline(db, description, '\0');
-      std::getline(db, img, '\0');
-    }
+  items_.clear();
+  unsigned int sku = 0;
+  unsigned long quantity = 0;
+  float price = 0;
+  std::string name, description, img;
+  for (size_t i = 0; i < num_items; i++) {
+    db.read(reinterpret_cast<char*>(&sku), sizeof(sku));
+    db.read(reinterpret_cast<char*>(&quantity), sizeof(quantity));
+    db.read(reinterpret_cast<char*>(&price), sizeof(price));
+    std::getline(db, name, '\0');
+    std::getline(db, description, '\0');
+    std::getline(db, img, '\0');
   }
   db.close();
 }
 
-void ItemRepository::save() {
+void ItemRepository::save() const {
   std::fstream db(db_filename_, std::ios::out | std::ios::binary);
-  if (!db) { std::cerr << "Could not open binary file\n"; }
+  if (!db) { throw new db_exception; }
   db.seekp(0, std::ios::beg);
   size_t num_items = items_.size();
   db.write(reinterpret_cast<char*>(&num_items), sizeof(num_items));
-  for (const auto& item : items_) {
+  for (const auto& [_, item] : items_) {
     unsigned int sku = item.get_sku();
     unsigned long quantity = item.get_quantity();
     float price = item.get_price();

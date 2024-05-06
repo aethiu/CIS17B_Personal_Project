@@ -9,16 +9,17 @@
 #define ITEMREPOSITORY_H
 
 #include <string>
-#include <vector>
+#include <unordered_map>
 
 #include "Item.h"
 #include "Order.h"
 #include "User.h"
+#include "Repository.h"
 
-class ItemRepository {
+class ItemRepository : public Repository {
 public:
   ItemRepository() =default;
-  ItemRepository(std::string database_file);
+  ItemRepository(std::string db_filename);
 
   void create_item(const Item& item);
   const Item* read_item(unsigned int sku) const;
@@ -26,14 +27,10 @@ public:
   void delete_item(unsigned int sku);
 
 private:
-  std::string db_filename_;
+  std::unordered_map<unsigned int, Item> items_;
 
-  std::vector<Item> items_;
-  std::vector<User> users_;
-  std::vector<Order> orders_;
-
-  void load();
-  void save();
+  void load() override;
+  void save() const override;
 };
 
 #endif /* ITEMREPOSITORY_H */
