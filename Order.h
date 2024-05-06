@@ -13,9 +13,6 @@
 
 class Order {
 public:
-    //! Constructs an order with the user's current cart
-    Order(User &user) : Order(user, user.get_cart()) { }
-    //! Constructs an order from an arbitrary cart
     Order(const User &user, const Cart &cart);
 
     //! Returns tax that was added to total

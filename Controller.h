@@ -10,6 +10,7 @@
 
 #include "ServiceManager.h"
 #include "User.h"
+#include "Order.h"
 
 class Controller {
 public:
@@ -27,12 +28,13 @@ public:
     }
     void register_user(std::string username, std::string password);
     void add_to_cart(const Item *item) { cart_.add_item(item); }
-    const Order& create_order() noexcept;
+    const Order* create_order() noexcept;
     void submit_order() { }
 
-    Order* get_order() { return order_; }
-    User* get_current_user() { return current_user_; }
     ServiceManager& get_service_manager() noexcept { return *service_manager_; };
+    Order* get_order() { return order_; }
+    const Cart& get_cart() { return cart_; }
+    User* get_current_user() { return current_user_; }
 
     bool is_logged_in() const noexcept { return true; }
 private:

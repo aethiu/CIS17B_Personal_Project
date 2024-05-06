@@ -8,9 +8,9 @@
 #ifndef CART_H
 #define CART_H
 
-#include <vector>
-
 #include "ItemService.h"
+
+#include <vector>
 
 class Cart {
 public:
@@ -36,7 +36,7 @@ public:
     float get_subtotal() const noexcept;
 
 private:
-    ItemService *item_service_;
+    ItemService &item_service_;
     std::vector<const Item*> items_;
 };
 

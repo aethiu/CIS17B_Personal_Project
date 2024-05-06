@@ -42,7 +42,7 @@ void View::menu_state() {
         case 1: state_ = MenuState::LOGIN; break;
         case 2: state_ = MenuState::REGISTER; break;
         case 3: {
-            if (!controller_->is_logged_in()) {
+            if (!controller_.is_logged_in()) {
               std::cout << "You must login to view the catalog.\n";
             } else {
               state_ = MenuState::CATALOG;
@@ -63,10 +63,10 @@ void View::login_state() {
     std::cin >> password;
     std::cout << std::endl;
 
-    if (!controller_->login_user(username, password)) {
+    if (!controller_.login_user(username, password)) {
         std::cout << "Invalid username or password.\n";
     } else {
-        std::cout << "Successfully logged in as " << controller_->get_current_user()->get_username() << std::endl;
+        std::cout << "Successfully logged in as " << controller_.get_current_user()->get_username() << std::endl;
     }
     state_ = MenuState::MAIN;
 }
@@ -93,7 +93,7 @@ void View::catalog_state() {
             << std::setw(8) << "Price"
             << std::setw(64) << "Description"
             << std::endl;
-  auto& items = controller_->get_service_manager()->get_item_service()->get_items();
+  auto& items = controller_.get_service_manager().get_item_service()->get_items();
   for (const auto& item : items) {
     std::cout << std::setw(8) << item->get_sku()
               << std::setw(24) << item->get_name()
@@ -115,13 +115,13 @@ void View::catalog_state() {
     state_ = MenuState::CART;
   } else {
     // Add item to cart
-    auto item_service = controller_->get_service_manager().get_item_service();
+    auto item_service = controller_.get_service_manager().get_item_service();
     unsigned long sku = std::stoi(input);
     auto item = item_service->get_item(sku);
     if (item == nullptr) {
       std::cout << "Could not find item with SKU " << sku << std::endl;
     } else {
-      controller_->add_to_cart(item_service->get_item(sku));
+      controller_.add_to_cart(item_service->get_item(sku));
       std::cout << "Added " << item->get_name() << " to your cart\n";
     }
   }
@@ -129,10 +129,9 @@ void View::catalog_state() {
 }
 
 void View::cart_state() {
-  const std::vector<const Item*>* items = &controller_->get_current_user()->get_cart().get_items();
   std::cout << "Your cart:\n";
   print_cart();
-  std::cout << "Subtotal: " << controller_->get_current_user()->get_cart().get_subtotal() << std::endl;
+  std::cout << "Subtotal: " << controller_.get_cart().get_subtotal() << std::endl;
   std::cout << std::endl;
 
   // Prompt for input
@@ -152,13 +151,13 @@ void View::cart_state() {
 }
 
 void View::checkout_state() {
-    const Order& order = controller_->create_order();
+    const Order* order = controller_.create_order();
     std::cout << "Current order:\n";
     print_cart();
-    std::cout << "Subtotal: " << controller_->get_current_user().get_cart().get_subtotal() << std::endl
-              << "Tax: " << order.get_tax() << std::endl
-              << "Shipping: " << order.get_shipping_cost() << std::endl
-              << "Total: " << order.get_total() << std::endl;
+    std::cout << "Subtotal: " << controller_.get_cart().get_subtotal() << std::endl
+              << "Tax: " << order->get_tax() << std::endl
+              << "Shipping: " << order->get_shipping_cost() << std::endl
+              << "Total: " << order->get_total() << std::endl;
 
 
     std::cout << std::endl
@@ -167,7 +166,7 @@ void View::checkout_state() {
     int input = -1;
     std::cin >> input;
     switch (input) {
-      case 1: { controller_->submit_order(); break; } // TODO confirm order submission
+      case 1: { controller_.submit_order(); break; } // TODO confirm order submission
       case 2: { state_ = MenuState::CART; break; }
       default: { std::cout << "Invalid input: " << input << std::endl; break; }
     }
@@ -192,7 +191,7 @@ void View::admin_state() {
 }
 
 void View::print_cart() const noexcept {
-  const std::vector<const Item*>& items = controller_->get_current_user().get_cart().get_items();
+  const std::vector<const Item*>& items = controller_.get_cart().get_items();
   std::cout << std::left
             << std::setw(8) << "SKU"
             << std::setw(24) << "Item Name"

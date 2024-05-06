@@ -12,10 +12,10 @@
 
 class View {
 public:
-    View(Controller& controller) : controller_(&controller) {}
+    View(Controller &controller) : controller_(controller) {}
     void show();
 private:
-    Controller *controller_ ;
+    Controller &controller_ ;
 
     bool exit_ = false;
 

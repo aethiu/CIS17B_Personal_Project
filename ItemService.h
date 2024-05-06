@@ -16,7 +16,7 @@
 class ItemService {
 public:
     ItemService();
-    ItemService(ItemRepository& repo) : repo_(repo);
+//    ItemService(ItemRepository &repo) : repo_(repo) { }
     virtual ~ItemService() =default;
     virtual const std::vector<Item*>& get_items() noexcept { return items_; };
     virtual Item* get_item(unsigned int sku) const;
