@@ -18,6 +18,7 @@ void View::show() {
             case MenuState::REGISTER: { register_state(); break; }
             case MenuState::CATALOG: { catalog_state(); break; }
             case MenuState::CART: { cart_state(); break; }
+            case MenuState::CART_REMOVE_ITEM: { cart_remove_item_state(); break; }
             case MenuState::CHECKOUT: { checkout_state(); break; }
             case MenuState::ADMIN: { admin_state(); break; }
             case MenuState::EXIT: {
@@ -26,6 +27,7 @@ void View::show() {
                 break;
             }
         }
+        std::cout << std::endl;
     }
 }
 
@@ -116,7 +118,7 @@ void View::catalog_state() {
   } else {
     // Add item to cart
     auto item_service = controller_.get_service_manager().get_item_service();
-    unsigned long sku = std::stoi(input);
+    unsigned long sku = std::stoul(input);
     auto item = item_service->get_item(sku);
     if (item == nullptr) {
       std::cout << "Could not find item with SKU " << sku << std::endl;
@@ -136,18 +138,24 @@ void View::cart_state() {
 
   // Prompt for input
   std::cout << "1. Checkout\n"
-            << "2. Return to catalog\n"
-            << "3. Return to main menu\n";
+            << "2. Remove item\n"
+            << "3. Return to catalog\n"
+            << "4. Return to main menu\n";
   int input = -1;
   std::cin >> input;
 
   // Transition
   switch (input) {
     case 1: { state_ = MenuState::CHECKOUT; break; }
-    case 2: { state_ = MenuState::CATALOG; break; }
-    case 3: { state_ = MenuState::MAIN; break; }
+    case 2: { state_ = MenuState::CART_REMOVE_ITEM; break; }
+    case 3: { state_ = MenuState::CATALOG; break; }
+    case 4: { state_ = MenuState::MAIN; break; }
     default: { std::cout << "Invalid input " << input << std::endl; break; }
   }
+}
+
+void View::cart_remove_item_state() {
+    state_ = MenuState::CART;
 }
 
 void View::checkout_state() {

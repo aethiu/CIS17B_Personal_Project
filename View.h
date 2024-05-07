@@ -25,8 +25,10 @@ private:
         REGISTER,
         CATALOG,
         CART,
+        CART_REMOVE_ITEM,
         CHECKOUT,
         ADMIN,
+        ADMIN_EDIT_USER,
         EXIT
     } state_ = MenuState::MAIN;
 
@@ -35,6 +37,7 @@ private:
     void register_state();
     void catalog_state();
     void cart_state();
+    void cart_remove_item_state();
     void checkout_state();
     void admin_state();
 
