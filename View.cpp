@@ -19,6 +19,7 @@ void View::show() {
             case MenuState::CATALOG: { catalog_state(); break; }
             case MenuState::CART: { cart_state(); break; }
             case MenuState::CART_REMOVE_ITEM: { cart_remove_item_state(); break; }
+            case MenuState::CART_ADD_ITEM: { cart_add_item_state(); break; }
             case MenuState::CHECKOUT: { checkout_state(); break; }
             case MenuState::ADMIN: { admin_state(); break; }
             case MenuState::EXIT: {
@@ -41,18 +42,18 @@ void View::menu_state() {
     int input = -1;
     std::cin >> input;
     switch (input) {
-        case 1: state_ = MenuState::LOGIN; break;
-        case 2: state_ = MenuState::REGISTER; break;
+        case 1: transition(MenuState::LOGIN); break;
+        case 2: transition(MenuState::REGISTER); break;
         case 3: {
             if (!controller_.is_logged_in()) {
               std::cout << "You must login to view the catalog.\n";
             } else {
-              state_ = MenuState::CATALOG;
+              transition(MenuState::CATALOG);
             }
             break;
         }
-        case 4: state_ = MenuState::ADMIN; break;
-        case 0: state_ = MenuState::EXIT; break;
+        case 4: transition(MenuState::ADMIN); break;
+        case 0: transition(state_ = MenuState::EXIT); break;
         default: std::cout << "Invalid input " << input << std::endl; break;
     }
 }
@@ -70,7 +71,7 @@ void View::login_state() {
     } else {
         std::cout << "Successfully logged in as " << controller_.get_current_user()->get_username() << std::endl;
     }
-    state_ = MenuState::MAIN;
+    transition(state_ = MenuState::MAIN);
 }
 
 void View::register_state() {
@@ -82,50 +83,44 @@ void View::register_state() {
 
 //    controller_->register_user(username, password);
 
-    state_ = MenuState::MAIN;
+    transition(MenuState::MAIN);
 }
 
 void View::catalog_state() {
-  // Display catalog items
-  std::cout << "Catalog:\n";
-  std::cout << std::left
-            << std::setw(8) << "SKU"
-            << std::setw(24) << "Item Name"
-            << std::setw(6) << "Qty."
-            << std::setw(8) << "Price"
-            << std::setw(64) << "Description"
-            << std::endl;
-  auto items = controller_.get_service_manager().get_item_service()->get_all_items();
-  for (const auto& item : items) {
-    std::cout << std::setw(8) << item->get_sku()
-              << std::setw(24) << item->get_name()
-              << std::setw(6) << item->get_quantity()
-              << std::setw(8) << item->get_price()
-              << std::setw(64) << item->get_description()
+  if (previous_state_ != MenuState::CART_ADD_ITEM) {
+    // Display catalog items
+    std::cout << "Catalog:\n";
+    std::cout << std::left
+              << std::setw(8) << "SKU"
+              << std::setw(24) << "Item Name"
+              << std::setw(6) << "Qty."
+              << std::setw(8) << "Price"
+              << std::setw(64) << "Description"
               << std::endl;
+    auto items = controller_.get_service_manager().get_item_service()->get_all_items();
+    for (const auto &item: items) {
+      std::cout << std::setw(8) << item->get_sku()
+                << std::setw(24) << item->get_name()
+                << std::setw(6) << item->get_quantity()
+                << std::setw(8) << item->get_price()
+                << std::setw(64) << item->get_description()
+                << std::endl;
+    }
   }
 
-  // Prompt for input // TODO refactor prompt to be consistent with other views
-  std::cout << "Enter a SKU to add an item to your cart, 'cart' to view your cart, or 'exit' to return to the main menu: ";
-  std::string input;
-  std::cin >> input;
+  // Prompt for input
+  std::cout << "1. Add item to cart\n"
+            << "2. View cart\n"
+            << "3. Return to main menu\n";
 
   // Process input
-  if (input == "exit") {
-    state_ = MenuState::MAIN;
-  } else if (input == "cart") {
-    state_ = MenuState::CART;
-  } else {
-    // Add item to cart
-    auto item_service = controller_.get_service_manager().get_item_service();
-    unsigned long sku = std::stoul(input);
-    auto item = item_service->get_item(sku);
-    if (item == nullptr) {
-      std::cout << "Could not find item with SKU " << sku << std::endl;
-    } else {
-      controller_.add_to_cart(item_service->get_item(sku));
-      std::cout << "Added " << item->get_name() << " to your cart\n";
-    }
+  int input = -1;
+  std::cin >> input;
+  switch (input) {
+      case 1: { transition(MenuState::CART_ADD_ITEM); break; }
+      case 2: { transition(MenuState::CART); break; }
+      case 3: { transition(MenuState::MAIN); break; }
+      default: { std::cout << "Invalid input " << input << std::endl; break; }
   }
 
 }
@@ -146,16 +141,35 @@ void View::cart_state() {
 
   // Transition
   switch (input) {
-    case 1: { state_ = MenuState::CHECKOUT; break; }
-    case 2: { state_ = MenuState::CART_REMOVE_ITEM; break; }
-    case 3: { state_ = MenuState::CATALOG; break; }
-    case 4: { state_ = MenuState::MAIN; break; }
+    case 1: { transition(MenuState::CHECKOUT); break; }
+    case 2: { transition(MenuState::CART_REMOVE_ITEM); break; }
+    case 3: { transition(MenuState::CATALOG); break; }
+    case 4: { transition(MenuState::MAIN); break; }
     default: { std::cout << "Invalid input " << input << std::endl; break; }
   }
 }
 
+void View::cart_add_item_state() {
+  auto item_service = controller_.get_service_manager().get_item_service();
+
+  std::cout << "Enter SKU to add to cart: ";
+  unsigned long sku;
+  std::cin >> sku;
+
+  // Find item by SKU and add to cart
+  auto item = item_service->get_item(sku);
+  if (item == nullptr) {
+    std::cout << "Could not find item with SKU " << sku << std::endl;
+  } else {
+    controller_.add_to_cart(item_service->get_item(sku));
+    std::cout << "Added " << item->get_name() << " to your cart\n";
+  }
+
+  transition(previous_state_);
+}
+
 void View::cart_remove_item_state() {
-    state_ = MenuState::CART;
+  transition(previous_state_);
 }
 
 void View::checkout_state() {
@@ -175,7 +189,7 @@ void View::checkout_state() {
     std::cin >> input;
     switch (input) {
       case 1: { controller_.submit_order(); break; } // TODO confirm order submission
-      case 2: { state_ = MenuState::CART; break; }
+      case 2: { transition(MenuState::CART); break; }
       default: { std::cout << "Invalid input: " << input << std::endl; break; }
     }
 }
@@ -195,7 +209,7 @@ void View::admin_state() {
               << '\n'
               << "6. Exit admin panel\n";
 
-    state_ = MenuState::MAIN;
+  transition(MenuState::MAIN);
 }
 
 void View::print_cart() const noexcept {
@@ -213,4 +227,9 @@ void View::print_cart() const noexcept {
               << std::setw(64) << item->get_description()
               << std::endl;
   }
+}
+
+void View::transition(MenuState state) noexcept {
+    previous_state_ = state_;
+    state_ = state;
 }
