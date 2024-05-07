@@ -8,14 +8,12 @@
 #ifndef CART_H
 #define CART_H
 
-#include "ItemService.h"
+#include "Item.h"
 
 #include <vector>
 
 class Cart {
 public:
-    Cart(ItemService &item_service);
-
     /** \brief Adds an item to the cart.
      *
      * Returns immediately if item is nullptr.
@@ -36,7 +34,6 @@ public:
     float get_subtotal() const noexcept;
 
 private:
-    ItemService &item_service_;
     std::vector<const Item*> items_;
 };
 

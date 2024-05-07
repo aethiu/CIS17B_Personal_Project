@@ -14,7 +14,7 @@
 
 class Controller {
 public:
-    Controller(ServiceManager &service_manager) : service_manager_(&service_manager), cart_(*service_manager.get_item_service()) { }
+    Controller(ServiceManager &service_manager) : service_manager_(&service_manager) { }
 
     /** \brief Login a user as the current user
      *
