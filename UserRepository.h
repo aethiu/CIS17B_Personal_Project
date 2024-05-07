@@ -12,24 +12,16 @@
 
 #include "User.h"
 
-#include <vector>
-
-class UserRepository : public Repository {
+class UserRepository : public Repository<unsigned int, User> {
 public:
     UserRepository() =default;
-    UserRepository(std::string db_filename) : Repository(db_filename) { load(); }
+    UserRepository(const std::string& db_filename) : Repository<unsigned int, User>(std::move(db_filename)) { load(); }
 
-    void create_user(const User& user);
-    const User* read_user(unsigned int id) const;
-    const User* read_user(std::string username) const;
-    void update_user(unsigned int id, const User& user);
-    void delete_user(unsigned int id);
+    const User* find_user(std::string username, std::string password) const;
 
 private:
-    void load() override;
-    void save() const override;
-
-    std::vector<User> users_;
+    void load_row(std::ifstream &db) override;
+    void save_row(std::ofstream &db, const User& row) const override;
 };
 
 #endif /* USERREPOSITORY_H */

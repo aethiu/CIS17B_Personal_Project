@@ -8,29 +8,20 @@
 #ifndef ITEMREPOSITORY_H
 #define ITEMREPOSITORY_H
 
-#include <string>
-#include <unordered_map>
-#include <vector>
-
 #include "Item.h"
 #include "Repository.h"
 
-class ItemRepository : public Repository {
+#include <string>
+#include <fstream>
+
+class ItemRepository : public Repository<unsigned long, Item> {
 public:
   ItemRepository() =default;
-  ItemRepository(std::string db_filename);
-
-  void create_item(const Item& item);
-  const Item* read_item(unsigned int sku) const;
-  std::vector<const Item*> read_all_items() const;
-  void update_item(unsigned int sku, const Item& item);
-  void delete_item(unsigned int sku);
+  ItemRepository(std::string db_filename) : Repository<unsigned long, Item>(std::move(db_filename)) { load(); }
 
 private:
-  std::unordered_map<unsigned int, Item> items_;
-
-  void load() override;
-  void save() const override;
+  void load_row(std::ifstream&) override;
+  void save_row(std::ofstream&, const Item&) const override;
 };
 
 #endif /* ITEMREPOSITORY_H */

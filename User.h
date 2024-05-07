@@ -13,6 +13,7 @@
 
 class User {
 public:
+    User() =default;
     User(unsigned int id, bool is_admin, std::string username, std::string password)
         : id_(id), username_(std::move(username)), password_(std::move(password)), is_admin_(is_admin) { }
 
@@ -20,6 +21,10 @@ public:
     unsigned int get_id() const noexcept { return id_; }
     const std::string& get_username() const noexcept { return username_; }
     const std::string& get_password() const noexcept { return password_; }
+
+    bool operator==(const User& user) const;
+    bool operator==(const unsigned int rhs) const { return id_ == rhs; }
+
 private:
     unsigned int id_ = 0;
     bool is_admin_ = false;

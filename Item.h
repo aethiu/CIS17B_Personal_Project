@@ -33,6 +33,8 @@ public:
     void set_description(std::string& description) noexcept { description_ = description; }
     void set_img(std::string& img) noexcept { img_ = img; }
 
+    bool operator==(unsigned long rhs) const { return sku_ == rhs; }
+
 private:
     unsigned int sku_ = 0;
     unsigned long quantity_ = 0;

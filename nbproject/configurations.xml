@@ -33,7 +33,6 @@
       <itemPath>ItemRepository.cpp</itemPath>
       <itemPath>ItemService.cpp</itemPath>
       <itemPath>Order.cpp</itemPath>
-      <itemPath>Repository.cpp</itemPath>
       <itemPath>ServiceManager.cpp</itemPath>
       <itemPath>User.cpp</itemPath>
       <itemPath>UserRepository.cpp</itemPath>
@@ -90,8 +89,6 @@
       <item path="Order.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Order.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Repository.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Repository.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -167,8 +164,6 @@
       <item path="Order.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Order.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Repository.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Repository.h" ex="false" tool="3" flavor2="0">
       </item>

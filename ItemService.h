@@ -17,13 +17,9 @@ class ItemService {
 public:
     ItemService(ItemRepository &repo) : repo_(repo) { }
 
-    /** \brief Returns an array of all the items in the catalog
-     *
-     * @return vector of items
-     */
-    std::vector<const Item*> get_all_items() const { return std::move(repo_.read_all_items()); }
+    std::vector<const Item*> get_all_items() const { return std::move(repo_.read_table()); }
 
-    const Item* get_item(unsigned int sku) const { return repo_.read_item(sku); }
+    const Item* get_item(unsigned int sku) const { return repo_.read_row(sku); }
 
     void add_item(const Item &item);
 
