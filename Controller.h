@@ -28,6 +28,7 @@ public:
     }
     const User* register_user(std::string username, std::string password);
     void add_to_cart(const Item *item) { cart_.add_item(item); }
+    const Item* remove_from_cart(const Item *item) { return cart_.remove_item(item); }
     const Order* create_order() noexcept;
     void submit_order() { }
 
@@ -37,6 +38,7 @@ public:
     const User* get_current_user() const { return current_user_; }
 
     bool is_logged_in() const noexcept { return current_user_ != nullptr; }
+
 private:
     ServiceManager *service_manager_;
     // TODO this is a mock implementation
@@ -46,4 +48,3 @@ private:
 };
 
 #endif /* CONTROLLER_H */
-

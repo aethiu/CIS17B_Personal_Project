@@ -152,7 +152,7 @@ void View::cart_state() {
 void View::cart_add_item_state() {
   auto item_service = controller_.get_service_manager().get_item_service();
 
-  std::cout << "Enter SKU to add to cart: ";
+  std::cout << "Enter SKU to add to your cart: ";
   unsigned long sku;
   std::cin >> sku;
 
@@ -169,6 +169,24 @@ void View::cart_add_item_state() {
 }
 
 void View::cart_remove_item_state() {
+  auto item_service = controller_.get_service_manager().get_item_service();
+
+  std::cout << "Enter a SKU to remove from your cart: ";
+  unsigned long sku;
+  std::cin >> sku;
+
+  // Find item by SKU and remove from cart
+  auto item = item_service->get_item(sku);
+  if (item == nullptr) {
+    std::cout << "Could not find item with SKU " << sku << std::endl;
+  } else {
+    if (controller_.remove_from_cart(item_service->get_item(sku))) {
+      std::cout << "Removed " << item->get_name() << " from your cart\n";
+    } else {
+      std::cout << "Could not find item with SKU " << sku << " in your cart.\n";
+    }
+  }
+
   transition(previous_state_);
 }
 
