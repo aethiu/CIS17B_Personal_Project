@@ -23,7 +23,7 @@ void View::show() {
             case MenuState::CHECKOUT: { checkout_state(); break; }
             case MenuState::ADMIN: { admin_state(); break; }
             case MenuState::EXIT: {
-                std::cout << "\nGoodbye\n";
+                std::cout << "Goodbye\n";
                 exit_ = true;
                 break;
             }
@@ -44,14 +44,7 @@ void View::menu_state() {
     switch (input) {
         case 1: transition(MenuState::LOGIN); break;
         case 2: transition(MenuState::REGISTER); break;
-        case 3: {
-            if (!controller_.is_logged_in()) {
-              std::cout << "You must login to view the catalog.\n";
-            } else {
-              transition(MenuState::CATALOG);
-            }
-            break;
-        }
+        case 3: { transition(MenuState::CATALOG); break; }
         case 4: transition(MenuState::ADMIN); break;
         case 0: transition(state_ = MenuState::EXIT); break;
         default: std::cout << "Invalid input " << input << std::endl; break;
@@ -87,7 +80,7 @@ void View::register_state() {
 }
 
 void View::catalog_state() {
-  if (previous_state_ != MenuState::CART_ADD_ITEM) {
+  if (previous_state_ != MenuState::CART_ADD_ITEM && previous_state_ != MenuState::CATALOG) {
     // Display catalog items
     std::cout << "Catalog:\n";
     std::cout << std::left
@@ -141,7 +134,14 @@ void View::cart_state() {
 
   // Transition
   switch (input) {
-    case 1: { transition(MenuState::CHECKOUT); break; }
+    case 1: {
+      if (controller_.is_logged_in()) {
+        transition(MenuState::CHECKOUT);
+      } else {
+        transition(MenuState::LOGIN);
+      }
+      break;
+    }
     case 2: { transition(MenuState::CART_REMOVE_ITEM); break; }
     case 3: { transition(MenuState::CATALOG); break; }
     case 4: { transition(MenuState::MAIN); break; }
