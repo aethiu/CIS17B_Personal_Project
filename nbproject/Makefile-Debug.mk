@@ -42,6 +42,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/ItemRepository.o \
 	${OBJECTDIR}/ItemService.o \
 	${OBJECTDIR}/Order.o \
+	${OBJECTDIR}/OrderRepository.o \
+	${OBJECTDIR}/OrderService.o \
 	${OBJECTDIR}/ServiceManager.o \
 	${OBJECTDIR}/User.o \
 	${OBJECTDIR}/UserRepository.o \
@@ -108,6 +110,16 @@ ${OBJECTDIR}/Order.o: Order.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Order.o Order.cpp
+
+${OBJECTDIR}/OrderRepository.o: OrderRepository.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OrderRepository.o OrderRepository.cpp
+
+${OBJECTDIR}/OrderService.o: OrderService.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OrderService.o OrderService.cpp
 
 ${OBJECTDIR}/ServiceManager.o: ServiceManager.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -15,7 +15,7 @@
 class UserRepository : public Repository<unsigned int, User> {
 public:
     UserRepository() =default;
-    UserRepository(const std::string& db_filename) : Repository<unsigned int, User>(std::move(db_filename)) { load(); }
+    UserRepository(std::string db_filename) : Repository<unsigned int, User>(std::move(db_filename)) { load(); }
 
     const User* find_user(std::string username, std::string password) const;
 

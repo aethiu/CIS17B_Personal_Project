@@ -10,7 +10,7 @@
 #include <ctime>
 #include <iomanip>
 
-Order::Order(const User &user, const Cart &cart)
+Order::Order(OrderNum order_num, const User &user, const Cart &cart)
         : cart_(&cart),
           user_(&user),
           total_(calculate_total(cart.get_subtotal())) {
@@ -18,7 +18,7 @@ Order::Order(const User &user, const Cart &cart)
   // Set time
   auto t = std::time(nullptr);
   std::stringstream ss;
-  ss << std::put_time(std::gmtime(&t), "%FT%T%z");
+  ss << std::put_time(std::gmtime(&t), "%FT%T");
   date_ = ss.str();
 }
 

@@ -13,7 +13,19 @@
 
 class Order {
 public:
-    Order(const User &user, const Cart &cart);
+    using OrderNum = unsigned long;
+
+    Order() =default;
+
+    /** \brief Constructs an order
+     *
+     * Clients should use OrderService::create_order() rather than calling this constructor directly.
+     *
+     * @param order_number
+     * @param user
+     * @param cart
+     */
+    Order(OrderNum order_number, const User &user, const Cart &cart);
 
     //! Returns tax that was added to total
     float get_tax() const noexcept { return cart_->get_subtotal()*tax_rate_; }
@@ -29,14 +41,17 @@ public:
     //! Returns the ISO 8601 formatted date that the order was created
     std::string get_data() const noexcept { return date_; }
 
+    bool operator==(OrderNum order_num) const { return order_num_ == order_num; }
+
 private:
     static constexpr float tax_rate_ = 0.07f;
     static constexpr float shipping_cost_ = 10.00f;
 
+    OrderNum order_num_ = -1;
     const User *user_;
-    const Cart *cart_;
     float total_;
-    std::string date_;
+    std::string date_ = "YYYY-mm-ddTHH:MM:SS"; // ISO 8601 format in UTC
+    const Cart *cart_;
 
     float calculate_total(float subtotal) const noexcept;
 };

@@ -8,6 +8,7 @@
 #include "Controller.h"
 
 const Order* Controller::create_order() noexcept {
-  order_ = new Order(*current_user_, cart_);
-  return order_;
+//  order_ = new Order(*current_user_, cart_);
+//  return order_;
+  return nullptr;
 }
