@@ -22,7 +22,7 @@ public:
         return instance;
     }
 private:
-    ServiceManager(std::string item_db_filename, std::string order_db_filename, std::string user_db_filename)
+    ServiceManager(std::string user_db_filename, std::string item_db_filename, std::string order_db_filename)
     : user_repo_(std::move(user_db_filename))
     , item_repo_{std::move(item_db_filename)}
     , order_repo_(std::move(order_db_filename))

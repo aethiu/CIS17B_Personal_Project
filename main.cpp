@@ -8,6 +8,8 @@
 #include "App.h"
 
 int main(int argc, char** argv) {
+    srand(time(nullptr));
+
     App app {ServiceManager::instance()};
 
     app.run();

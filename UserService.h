@@ -17,7 +17,17 @@ class UserService {
 public:
     UserService(UserRepository& repo) : repo_(repo) { }
 
+    const User* find_user(std::string username, std::string password) const { return repo_.find_user(username, password); }
     const User* add_user(const User& user) { return repo_.create_row(user.get_id(), user); }
+
+    /** \brief Get a new, unused ID
+     *
+     * ID are guaranteed to be unused at the time of calling.
+     * Subsequent calls without adding a new User with the returned ID are not guaranteed to be unused.
+     *
+     * @return Unused user ID
+     */
+    unsigned int get_new_id() const;
 
 private:
     UserRepository& repo_;
