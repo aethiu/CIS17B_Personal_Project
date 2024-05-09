@@ -59,10 +59,10 @@ void View::login_state() {
     std::cin >> password;
     std::cout << std::endl;
 
-    if (!controller_.login_user(username, password)) {
-        std::cout << "Invalid username or password.\n";
+    if (controller_.login(username, password)) {
+      std::cout << "Successfully logged in as " << controller_.get_current_user()->get_username() << std::endl;
     } else {
-        std::cout << "Successfully logged in as " << controller_.get_current_user()->get_username() << std::endl;
+      std::cout << "Invalid username or password.\n";
     }
     transition(state_ = MenuState::MAIN);
 }
@@ -74,7 +74,7 @@ void View::register_state() {
     std::cout << "Enter password: ";
     std::cin >> password;
 
-//    controller_->register_user(username, password);
+    controller_.register_user(username, password);
 
     transition(MenuState::MAIN);
 }
@@ -192,6 +192,11 @@ void View::cart_remove_item_state() {
 
 void View::checkout_state() {
     const Order* order = controller_.create_order();
+    if (order == nullptr) {
+      std::cout << "Could not create order.\n";
+      transition(previous_state_);
+      return;
+    }
     std::cout << "Current order:\n";
     print_cart();
     std::cout << "Subtotal: " << controller_.get_cart().get_subtotal() << std::endl
@@ -213,6 +218,11 @@ void View::checkout_state() {
 }
 
 void View::admin_state() {
+  if (!controller_.is_logged_in() || controller_.get_current_user() == nullptr) {
+    std::cout << "You must be logged in as an admin to view the admin panel.\n";
+    transition(previous_state_);
+    return;
+  }
     std::cout << "Admin Panel\n"
               << "-----------\n"
               << '\n'

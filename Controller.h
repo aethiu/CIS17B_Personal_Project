@@ -22,8 +22,10 @@ public:
      * @param password User account's password
      * @return True if login is successful or false otherwise
      */
-    bool login_user(std::string username, std::string password) {
-        // TODO this is a mock implementation
+    bool login(std::string username, std::string password) {
+        auto user = service_manager_->get_user_service()->find_user(username, password);
+        if (user == nullptr) return false;
+        current_user_ = user;
         return true;
     }
     const User* register_user(std::string username, std::string password);
@@ -40,9 +42,8 @@ public:
     bool is_logged_in() const noexcept { return current_user_ != nullptr; }
 
 private:
-    ServiceManager *service_manager_;
-    // TODO this is a mock implementation
-    User* current_user_ = new User(1, true, "test", "test");
+    ServiceManager *service_manager_ = nullptr;
+    const User* current_user_ = nullptr;
     Cart cart_;
     Order* order_ = nullptr;
 };

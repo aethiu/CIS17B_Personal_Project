@@ -12,3 +12,8 @@ const Order* Controller::create_order() noexcept {
 //  return order_;
   return nullptr;
 }
+
+const User* Controller::register_user(std::string username, std::string password) {
+  User user(service_manager_->get_user_service()->get_new_id(), false, username, password);
+  return service_manager_->get_user_service()->add_user(user);
+}

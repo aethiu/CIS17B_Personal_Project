@@ -17,7 +17,7 @@ public:
     UserRepository() =default;
     UserRepository(std::string db_filename) : Repository<unsigned int, User>(std::move(db_filename)) { load(); }
 
-    const User* find_user(std::string username, std::string password) const;
+    const User* find_user(const std::string& username, const std::string& password) const;
 
 private:
     void load_row(std::ifstream &db) override;
