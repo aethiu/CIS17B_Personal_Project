@@ -7,23 +7,11 @@
 
 #include "Order.h"
 
-#include <ctime>
-#include <iomanip>
+#include <utility>
 
-Order::Order(OrderNum order_num, const User &user, const Cart &cart)
-        : cart_(&cart),
-          user_(&user),
-          total_(calculate_total(cart.get_subtotal())) {
-
-  // Set time
-  auto t = std::time(nullptr);
-  std::stringstream ss;
-  ss << std::put_time(std::gmtime(&t), "%FT%T");
-  date_ = ss.str();
-}
-
-float Order::calculate_total(float subtotal) const noexcept {
-  float total = subtotal;
-  total += total*tax_rate_ + shipping_cost_;
-  return total;
+Order::Order(OrderNum order_num, const User &user, float subtotal, std::string date, const std::unordered_map<unsigned int, unsigned long>& items)
+        : user_(&user)
+        , subtotal_(subtotal)
+        , date_(std::move(date))
+        , items_(items) {
 }
