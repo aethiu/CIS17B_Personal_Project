@@ -17,7 +17,19 @@ const Order* OrderService::create_order(const User& user, const Cart& cart) {
   ss << std::put_time(std::gmtime(&t), "%FT%T");
   std::string date = ss.str();
 
-  Order order(get_new_order_num(), user, cart.get_subtotal(), date, cart.get_quantities());
+  float subtotal = cart.get_subtotal(),
+        tax = cart.get_subtotal()*tax_rate_,
+        shipping = shipping_cost_,
+        total = subtotal+tax+shipping;
+
+  Order order(get_new_order_num(),
+              user.get_id(),
+              subtotal,
+              tax,
+              shipping,
+              total,
+              date,
+              cart.get_quantities());
   return repo_.create_row(order.get_order_num(), std::move(order));
 }
 

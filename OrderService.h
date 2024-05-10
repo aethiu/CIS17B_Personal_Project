@@ -19,6 +19,11 @@ public:
     , repo_(repository)
     { }
 
+    //! Returns tax rate
+    float get_tax_rate() const noexcept { return tax_rate_; }
+    //! Returns shipping fee
+    float get_shipping_cost() noexcept { return shipping_cost_; }
+
     const Order* create_order(const User&, const Cart&);
 
     Order::OrderNum get_new_order_num() const;
@@ -26,6 +31,9 @@ public:
     const Order* submit_order(const Order&);
 
 private:
+    static constexpr float tax_rate_ = 0.07f;
+    static constexpr float shipping_cost_ = 10.00f;
+
     OrderRepository& repo_;
     const ItemService& item_service_;
 

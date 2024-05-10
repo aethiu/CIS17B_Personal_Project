@@ -10,7 +10,7 @@
 
 #include "Item.h"
 
-#include <unordered_map>
+#include <map>
 #include <vector>
 
 /** \brief Shopping cart
@@ -52,7 +52,7 @@ public:
     unsigned long get_quantity(unsigned int sku) const;
 
     //! Get a map of SKUs that maps an item's SKU to the quantity of the item in the cart.
-    const std::unordered_map<unsigned int, unsigned long>& get_quantities() const noexcept { return quantities_; }
+    const std::map<unsigned int, unsigned long>& get_quantities() const noexcept { return quantities_; }
 
     /** \brief Get the items in the cart
      *
@@ -71,7 +71,7 @@ public:
 private:
   std::vector<const Item*> items_;
   // Keep separate quantity map because PHP maps can't use const Item* pointers as keys like C++
-  std::unordered_map<unsigned int, unsigned long> quantities_;
+  std::map<unsigned int, unsigned long> quantities_;
 };
 
 #endif /* CART_H */

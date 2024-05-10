@@ -11,7 +11,7 @@
 #include "Cart.h"
 #include "User.h"
 
-#include <unordered_map>
+#include <map>
 
 class Order {
 public:
@@ -29,36 +29,33 @@ public:
      * @param date
      * @param items
      */
-    Order(OrderNum order_number, const User &user, float subtotal, std::string date, const std::unordered_map<unsigned int, unsigned long>& items);
-
-    //! Returns tax that was added to total
-    float get_tax() const noexcept { return subtotal_*tax_rate_; }
-    //! Returns shipping fee
-    static float get_shipping_cost() noexcept { return shipping_cost_; }
+    Order(OrderNum order_number, unsigned int user_id, float subtotal, float tax, float shipping, float total, const std::string date, std::map<unsigned int, unsigned long> items);
 
     OrderNum get_order_num() const noexcept { return order_num_; }
     //! Returns the user that created the order
-    const User* get_user() const noexcept { return user_; }
+    const unsigned int get_user_id() const noexcept { return user_id_; }
     //! Returns the items in the order as a map of SKUs to quantities
-    const std::unordered_map<unsigned int, unsigned long>& get_items() const { return items_; }
+    const std::map<unsigned int, unsigned long>& get_items() const { return items_; }
     //! Returns the subtotal
     float get_subtotal() const noexcept { return subtotal_; }
+    //! Returns the tax
+    float get_tax() const noexcept { return tax_; }
+    //! Returns the shipping
+    float get_shipping() const noexcept { return tax_; }
     //! Returns the calculated total
-    float get_total() const noexcept { return subtotal_+get_tax()+get_shipping_cost(); }
+    float get_total() const noexcept { return total_; }
     //! Returns the ISO 8601 formatted date that the order was created
-    std::string get_data() const noexcept { return date_; }
+    std::string get_date() const noexcept { return date_; }
 
     bool operator==(OrderNum order_num) const { return order_num_ == order_num; }
 
 private:
-    static constexpr float tax_rate_ = 0.07f;
-    static constexpr float shipping_cost_ = 10.00f;
 
     OrderNum order_num_ = -1;
-    const User *user_ = nullptr;
-    float subtotal_ = 0.0f;
+    unsigned int user_id_ = 0;
+    float subtotal_ = 0.0f, tax_ = 0.0f, shipping_ = 0.0f, total_ = 0.0f;
     std::string date_ = "YYYY-mm-ddTHH:MM:SS"; // ISO 8601 format in UTC
-    const std::unordered_map<unsigned int, unsigned long> items_;
+    std::map<unsigned int, unsigned long> items_; // std::map has a copy assignment overload, but std::unordred_map's is deleted
 };
 
 #endif /* ORDER_H */

@@ -9,9 +9,12 @@
 
 #include <utility>
 
-Order::Order(OrderNum order_num, const User &user, float subtotal, std::string date, const std::unordered_map<unsigned int, unsigned long>& items)
-        : user_(&user)
+Order::Order(OrderNum order_num, unsigned int user_id, float subtotal, float tax, float shipping, float total, std::string date, std::map<unsigned int, unsigned long> items)
+        : user_id_(user_id)
         , subtotal_(subtotal)
+        , tax_(tax)
+        , shipping_(shipping)
+        , total_(total)
         , date_(std::move(date))
-        , items_(items) {
+        , items_(std::move(items)) {
 }
