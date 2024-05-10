@@ -30,8 +30,9 @@ public:
     //! Returns tax that was added to total
     float get_tax() const noexcept { return cart_->get_subtotal()*tax_rate_; }
     //! Returns shipping fee
-    float get_shipping_cost() const noexcept { return shipping_cost_; }
+    static float get_shipping_cost() noexcept { return shipping_cost_; }
 
+    OrderNum get_order_num() const noexcept { return order_num_; }
     //! Returns the user that created the order
     const User* get_user() const noexcept { return user_; }
     //! Returns the cart used to create the order
