@@ -13,8 +13,9 @@
 
 #include <string>
 
-class OrderRepository : Repository<Order::OrderNum , Order> {
+class OrderRepository : public Repository<Order::OrderNum , Order> {
 public:
+    OrderRepository() =default;
     OrderRepository(std::string db_filename) : Repository<Order::OrderNum, Order>(db_filename) { }
 
 private:

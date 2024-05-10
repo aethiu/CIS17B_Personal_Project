@@ -19,11 +19,15 @@ public:
     , repo_(repository)
     { }
 
-    const Order* create_order() { return nullptr; }
+    const Order* create_order(const User&, const Cart&);
+
+    Order::OrderNum get_new_order_num() const;
+
+    const Order* submit_order(const Order&);
 
 private:
-    OrderRepository repo_;
-     const ItemService& item_service_;
+    OrderRepository& repo_;
+    const ItemService& item_service_;
 
 };
 

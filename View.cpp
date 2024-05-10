@@ -85,16 +85,16 @@ void View::catalog_state() {
     std::cout << "Catalog:\n";
     std::cout << std::left
               << std::setw(8) << "SKU"
-              << std::setw(24) << "Item Name"
-              << std::setw(6) << "Qty."
+              << std::setw(16) << "Item Name"
+              << std::setw(8) << "Qty."
               << std::setw(8) << "Price"
               << std::setw(64) << "Description"
               << std::endl;
     auto items = controller_.get_service_manager().get_item_service()->get_all_items();
     for (const auto &item: items) {
       std::cout << std::setw(8) << item->get_sku()
-                << std::setw(24) << item->get_name()
-                << std::setw(6) << item->get_quantity()
+                << std::setw(16) << item->get_name()
+                << std::setw(8) << item->get_quantity()
                 << std::setw(8) << item->get_price()
                 << std::setw(64) << item->get_description()
                 << std::endl;
@@ -241,19 +241,25 @@ void View::admin_state() {
 }
 
 void View::print_cart() const noexcept {
-  const std::vector<const Item*>& items = controller_.get_cart().get_items();
+  const auto& items = controller_.get_cart().get_items();
   std::cout << std::left
             << std::setw(8) << "SKU"
-            << std::setw(24) << "Item Name"
+            << std::setw(16) << "Item Name"
+            << std::setw(8) << "Qty."
             << std::setw(8) << "Price"
             << std::setw(64) << "Description"
             << std::endl;
   for (auto item : items) {
-    std::cout << std::setw(8) << item->get_sku()
-              << std::setw(24) << item->get_name()
-              << std::setw(8) << item->get_price()
-              << std::setw(64) << item->get_description()
-              << std::endl;
+    if (item == nullptr) {
+      std::cout << "Unknown item\n";
+    } else {
+      std::cout << std::setw(8) << item->get_sku()
+                << std::setw(16) << item->get_name()
+                << std::setw(8) << controller_.get_cart().get_quantity(item->get_sku())
+                << std::setw(8) << item->get_price()
+                << std::setw(64) << item->get_description()
+                << std::endl;
+    }
   }
 }
 
