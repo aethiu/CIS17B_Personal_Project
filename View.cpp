@@ -64,7 +64,7 @@ void View::login_state() {
     } else {
       std::cout << "Invalid username or password.\n";
     }
-    transition(state_ = MenuState::MAIN);
+    transition(previous_state_);
 }
 
 void View::register_state() {
@@ -199,9 +199,9 @@ void View::checkout_state() {
     }
     std::cout << "Current order:\n";
     print_cart();
-    std::cout << "Subtotal: " << controller_.get_cart().get_subtotal() << std::endl
+    std::cout << "Subtotal: " << order->get_subtotal() << std::endl
               << "Tax: " << order->get_tax() << std::endl
-              << "Shipping: " << order->get_shipping_cost() << std::endl
+              << "Shipping: " << order->get_shipping() << std::endl
               << "Total: " << order->get_total() << std::endl;
 
 
@@ -211,7 +211,13 @@ void View::checkout_state() {
     int input = -1;
     std::cin >> input;
     switch (input) {
-      case 1: { controller_.submit_order(); break; } // TODO confirm order submission
+      case 1: {
+        controller_.submit_order();
+        // TODO confirm order submission
+        std::cout << "Order #" << order->get_order_num() << " submitted.\n";
+        transition(MenuState::CART);
+        break;
+      }
       case 2: { transition(MenuState::CART); break; }
       default: { std::cout << "Invalid input: " << input << std::endl; break; }
     }

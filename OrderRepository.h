@@ -16,7 +16,7 @@
 class OrderRepository : public Repository<Order::OrderNum , Order> {
 public:
     OrderRepository() =default;
-    OrderRepository(std::string db_filename) : Repository<Order::OrderNum, Order>(db_filename) { }
+    OrderRepository(std::string db_filename) : Repository<Order::OrderNum, Order>(db_filename) { load(); }
 
 private:
   void load_row(std::ifstream&) override;

@@ -32,10 +32,10 @@ public:
     void add_to_cart(const Item *item) { cart_.add_item(item); }
     const Item* remove_from_cart(const Item *item) { return cart_.remove_item(item); }
     const Order* create_order() noexcept;
-    void submit_order() { }
+    void submit_order() { service_manager_->get_order_service()->submit_order(order_); } // TODO clear cart
 
     ServiceManager& get_service_manager() noexcept { return *service_manager_; };
-    const Order* get_order() const { return order_; }
+    const Order* get_order() const { return &order_; }
     const Cart& get_cart() const { return cart_; }
     const User* get_current_user() const { return current_user_; }
 
@@ -45,7 +45,7 @@ private:
     ServiceManager *service_manager_ = nullptr;
     const User* current_user_ = nullptr;
     Cart cart_;
-    Order* order_ = nullptr;
+    Order order_;
 };
 
 #endif /* CONTROLLER_H */

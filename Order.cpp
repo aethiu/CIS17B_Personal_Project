@@ -10,7 +10,8 @@
 #include <utility>
 
 Order::Order(OrderNum order_num, unsigned int user_id, float subtotal, float tax, float shipping, float total, std::string date, std::map<unsigned int, unsigned long> items)
-        : user_id_(user_id)
+        : order_num_(order_num)
+        , user_id_(user_id)
         , subtotal_(subtotal)
         , tax_(tax)
         , shipping_(shipping)

@@ -47,7 +47,7 @@ void OrderRepository::save_row(std::ofstream &db, const Order& order) const {
   float total = order.get_total();
   auto items_ = order.get_items();
   short num_items = items_.size();
-          db.write(reinterpret_cast<char*>(&order_num), sizeof(order_num));
+  db.write(reinterpret_cast<char*>(&order_num), sizeof(order_num));
   db.write(reinterpret_cast<char*>(&id), sizeof(id));
   db.write(reinterpret_cast<char*>(&subtotal), sizeof(subtotal));
   db.write(reinterpret_cast<char*>(&tax), sizeof(tax));

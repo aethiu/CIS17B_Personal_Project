@@ -10,7 +10,7 @@
 #include <ctime>
 #include <iomanip>
 
-const Order* OrderService::create_order(const User& user, const Cart& cart) {
+Order OrderService::create_order(const User& user, const Cart& cart) {
   // Get current time
   auto t = std::time(nullptr);
   std::stringstream ss;
@@ -30,11 +30,11 @@ const Order* OrderService::create_order(const User& user, const Cart& cart) {
               total,
               date,
               cart.get_quantities());
-  return repo_.create_row(order.get_order_num(), std::move(order));
+  return std::move(order);
 }
 
 Order::OrderNum OrderService::get_new_order_num() const {
-  unsigned int order_num = rand()%100000; // should be changed max possible ID
+  unsigned int order_num = rand()%10000; // should be changed max possible ID
   if (repo_.read_row(order_num) == nullptr) {
     return order_num;
   }

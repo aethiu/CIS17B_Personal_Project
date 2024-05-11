@@ -8,9 +8,8 @@
 #include "Controller.h"
 
 const Order* Controller::create_order() noexcept {
-//  order_ = new Order(*current_user_, cart_);
-//  return order_;
-  return nullptr;
+  order_ = std::move(service_manager_->get_order_service()->create_order(*current_user_, cart_));
+  return &order_;
 }
 
 const User* Controller::register_user(std::string username, std::string password) {

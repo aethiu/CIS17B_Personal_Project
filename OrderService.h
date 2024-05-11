@@ -24,7 +24,7 @@ public:
     //! Returns shipping fee
     float get_shipping_cost() noexcept { return shipping_cost_; }
 
-    const Order* create_order(const User&, const Cart&);
+    Order create_order(const User&, const Cart&);
 
     Order::OrderNum get_new_order_num() const;
 
