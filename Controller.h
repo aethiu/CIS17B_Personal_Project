@@ -32,7 +32,7 @@ public:
     void add_to_cart(const Item *item) { cart_.add_item(item); }
     const Item* remove_from_cart(const Item *item) { return cart_.remove_item(item); }
     const Order* create_order() noexcept;
-    void submit_order() { service_manager_->get_order_service()->submit_order(order_); } // TODO clear cart
+    void submit_order();
 
     ServiceManager& get_service_manager() noexcept { return *service_manager_; };
     const Order* get_order() const { return &order_; }

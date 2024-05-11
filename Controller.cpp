@@ -16,3 +16,8 @@ const User* Controller::register_user(std::string username, std::string password
   User user(service_manager_->get_user_service()->get_new_id(), false, username, password);
   return service_manager_->get_user_service()->add_user(user);
 }
+
+void Controller::submit_order() {
+  service_manager_->get_order_service()->submit_order(order_);
+  cart_ = Cart();
+}
