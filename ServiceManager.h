@@ -14,7 +14,7 @@
 #include "ItemService.h"
 #include "OrderService.h"
 
-// Singleton registry for services such as ItemService and UserService
+//! Singleton registry for services such as ItemService and UserService
 class ServiceManager {
 public:
     static ServiceManager& instance() {
