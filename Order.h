@@ -41,7 +41,7 @@ public:
     //! Returns the tax
     float get_tax() const noexcept { return tax_; }
     //! Returns the shipping
-    float get_shipping() const noexcept { return tax_; }
+    float get_shipping() const noexcept { return shipping_; }
     //! Returns the calculated total
     float get_total() const noexcept { return total_; }
     //! Returns the ISO 8601 formatted date that the order was created
