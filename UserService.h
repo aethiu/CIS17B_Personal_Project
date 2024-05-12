@@ -18,8 +18,10 @@ class UserService {
 public:
     UserService(UserRepository& repo) : repo_(repo) { }
 
+    const User* get_user(unsigned int id) const { return repo_.read_row(id); }
     const User* find_user(std::string username, std::string password) const { return repo_.find_user(username, password); }
     const User* add_user(const User& user) { return repo_.create_row(user.get_id(), user); }
+    const User* update_user(const User& user) { return repo_.update_row(user.get_id(), user); }
     void remove_user(unsigned int id) { repo_.delete_row(id); }
     const std::vector<const User*> get_users() { return std::move(repo_.read_table()); }
 

@@ -30,6 +30,7 @@ private:
         ADMIN,
         ADMIN_ADD_ITEM,
         ADMIN_EDIT_ITEM,
+        ADMIN_ADD_USER,
         ADMIN_EDIT_USER,
         EXIT
     } state_ = MenuState::MAIN;
@@ -46,6 +47,7 @@ private:
     void admin_state();
     void admin_add_item_state();
     void admin_edit_item_state();
+    void admin_add_user_state();
     void admin_edit_user_state();
 
     void print_cart() const noexcept;

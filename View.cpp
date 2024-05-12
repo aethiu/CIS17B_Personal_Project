@@ -25,6 +25,7 @@ void View::show() {
             case MenuState::ADMIN: { admin_state(); break; }
             case MenuState::ADMIN_ADD_ITEM: { admin_add_item_state(); break; }
             case MenuState::ADMIN_EDIT_ITEM: { admin_edit_item_state(); break; }
+            case MenuState::ADMIN_ADD_USER: { admin_add_user_state(); break; }
             case MenuState::ADMIN_EDIT_USER: { admin_edit_user_state(); break; }
             case MenuState::EXIT: {
                 std::cout << "Goodbye\n";
@@ -241,10 +242,11 @@ void View::admin_state() {
               << "3. Remove item from catalog\n"
               << '\n'
               << "User Actions:\n"
-              << "4. Edit user\n"
-              << "5. Remove user\n"
+              << "4. Add user\n"
+              << "5. Edit user\n"
+              << "6. Remove user\n"
               << '\n'
-              << "6. Exit admin panel\n";
+              << "7. Exit admin panel\n";
 
   int input = -1;
   std::cin >> input;
@@ -259,10 +261,14 @@ void View::admin_state() {
         break;
       }
       case 4: {
+          transition(MenuState::ADMIN_ADD_USER);
+          break;
+      }
+      case 5: {
         transition(MenuState::ADMIN_EDIT_USER);
         break;
       }
-      case 5: {
+      case 6: {
         print_users();
         std::cout << "\nEnter User ID to remove: ";
         unsigned int id;
@@ -270,7 +276,7 @@ void View::admin_state() {
         controller_.remove_user(id);
         break;
       }
-      case 6: { transition(MenuState::MAIN); break; }
+      case 7: { transition(MenuState::MAIN); break; }
       default: { std::cout << "Invalid input: " << input << std::endl; break; }
   }
 }
@@ -328,7 +334,6 @@ void View::admin_edit_item_state() {
     std::cin >> input;
     switch(input) {
         case 1: {
-            unsigned int sku;
             std::cout << "Enter SKU: ";
             std::cin >> sku;
             item.set_sku(sku);
@@ -373,11 +378,94 @@ void View::admin_edit_item_state() {
     ret = controller_.get_service_manager().get_item_service().update_item(item);
     if (ret == nullptr) {
         std::cout << "Item update failed.\n";
+    } else {
+        std::cout << "Item update successful.\n";
     }
 }
 
-void View::admin_edit_user_state() {
+void View::admin_add_user_state() {
+    unsigned int id;
+    bool is_admin;
+    std::string username;
+    std::string password;
+    std::cout << "Enter ID: ";
+    std::cin >> id;
+    std::cout << "Admin? [0/1]: ";
+    std::cin >> is_admin;
+    std::cout << "Enter username: ";
+    std::cin.ignore();
+    std::getline(std::cin, username);
+    std::cout << "Enter password: ";
+    std::getline(std::cin, password);
+    controller_.add_user({id, is_admin, username, password});
+    transition(previous_state_);
+}
 
+void View::admin_edit_user_state() {
+    print_users();
+
+    unsigned int id;
+    std::cout << "Enter ID: ";
+    std::cin >> id;
+
+    auto ret = controller_.get_service_manager().get_user_service().get_user(id);
+    if (ret == nullptr) {
+        std::cout << "Could not find user by ID " << id << std::endl;
+        transition(previous_state_);
+        return;
+    }
+    User user = *ret;
+
+    std::cout << "1. ID\n"
+              << "2. Username\n"
+              << "3. Password\n"
+              << "4. Admin flag\n"
+              << "5. Exit edit menu.\n";
+
+    int input = -1;
+    std::cin >> input;
+    switch(input) {
+        case 1: {
+            std::cout << "Enter ID: ";
+            std::cin >> id;
+            user.set_id(id);
+            break;
+        }
+        case 2: {
+            std::string name;
+            std::cout << "Enter username: ";
+            std::cin.ignore();
+            std::getline(std::cin, name);
+            user.set_username(name);
+            break;
+        }
+        case 3: {
+            std::string password;
+            std::cout << "Enter password: ";
+            std::cin.ignore();
+            std::getline(std::cin, password);
+            user.set_password(password);
+            break;
+        }
+        case 4: {
+            bool admin;
+            std::cout << "Enter admin: ";
+            std::cin >> admin;
+            user.set_admin(admin);
+            break;
+        }
+        case 5: {
+            transition(MenuState::ADMIN);
+            return;
+        }
+        default: { std::cout << "Invalid input: " << input << std::endl; break; }
+    }
+    ret = controller_.get_service_manager().get_user_service().update_user(user);
+    if (ret == nullptr) {
+        std::cout << "User update failed.\n";
+    } else {
+        std::cout << "User update successful.\n";
+    }
 }
 
 void View::print_cart() const noexcept {
@@ -406,12 +494,12 @@ void View::print_cart() const noexcept {
 void View::print_users() const noexcept {
   const auto& users = controller_.get_service_manager().get_user_service().get_users();
   std::cout << std::left
-            << std::setw(5) << "ID"
+            << std::setw(8) << "ID"
             << std::setw(16) << "Username"
             << std::setw(8) << "Admin?"
             << std::endl;
   for (const auto& user : users) {
-    std::cout << std::setw(5) << user->get_id()
+    std::cout << std::setw(8) << user->get_id()
               << std::setw(16) << user->get_username()
               << std::setw(8) << (user->is_admin() ? 'X' : ' ')
               << std::endl;
