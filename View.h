@@ -28,6 +28,8 @@ private:
         CART_REMOVE_ITEM,
         CHECKOUT,
         ADMIN,
+        ADMIN_ADD_ITEM,
+        ADMIN_EDIT_ITEM,
         ADMIN_EDIT_USER,
         EXIT
     } state_ = MenuState::MAIN;
@@ -42,8 +44,13 @@ private:
     void cart_add_item_state();
     void checkout_state();
     void admin_state();
+    void admin_add_item_state();
+    void admin_edit_item_state();
+    void admin_edit_user_state();
 
     void print_cart() const noexcept;
+    void print_users() const noexcept;
+    void print_item_list_header() const noexcept;
 
     void transition(MenuState) noexcept;
 };

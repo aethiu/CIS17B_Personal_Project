@@ -20,8 +20,9 @@ public:
     std::vector<const Item*> get_all_items() const { return std::move(repo_.read_table()); }
 
     const Item* get_item(unsigned int sku) const { return repo_.read_row(sku); }
-
-    void add_item(const Item &item);
+    const Item* add_item(const Item &item) { return repo_.create_row(item.get_sku(), item); }
+    void remove_item(unsigned int sku) { repo_.delete_row(sku); }
+    const Item* update_item(const Item& item) { return repo_.update_row(item.get_sku(), item); }
 
 private:
     ItemRepository& repo_;

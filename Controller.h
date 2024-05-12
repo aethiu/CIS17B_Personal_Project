@@ -34,6 +34,11 @@ public:
     const Order* create_order() noexcept;
     void submit_order();
 
+    // Admin actions
+    const Item* add_item(const Item &item) { return service_manager_->get_item_service()->add_item(item); }
+    void remove_item(unsigned int sku) { service_manager_->get_item_service()->remove_item(sku); }
+    void remove_user(unsigned int id) { service_manager_->get_user_service()->remove_user(id); }
+
     ServiceManager& get_service_manager() noexcept { return *service_manager_; };
     const Order* get_order() const { return &order_; }
     const Cart& get_cart() const { return cart_; }

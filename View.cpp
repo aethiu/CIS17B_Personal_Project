@@ -7,6 +7,7 @@
 
 #include "View.h"
 
+#include <string>
 #include <iostream>
 #include <iomanip>
 
@@ -22,6 +23,9 @@ void View::show() {
             case MenuState::CART_ADD_ITEM: { cart_add_item_state(); break; }
             case MenuState::CHECKOUT: { checkout_state(); break; }
             case MenuState::ADMIN: { admin_state(); break; }
+            case MenuState::ADMIN_ADD_ITEM: { admin_add_item_state(); break; }
+            case MenuState::ADMIN_EDIT_ITEM: { admin_edit_item_state(); break; }
+            case MenuState::ADMIN_EDIT_USER: { admin_edit_user_state(); break; }
             case MenuState::EXIT: {
                 std::cout << "Goodbye\n";
                 exit_ = true;
@@ -243,7 +247,138 @@ void View::admin_state() {
               << '\n'
               << "6. Exit admin panel\n";
 
-  transition(MenuState::MAIN);
+  int input = -1;
+  std::cin >> input;
+  switch(input) {
+      case 1: { transition(MenuState::ADMIN_ADD_ITEM); break; }
+      case 2: { transition(MenuState::ADMIN_EDIT_ITEM); break; }
+      case 3: {
+        std::cout << "\nEnter SKU to remove: ";
+        unsigned int sku;
+        std::cin >> sku;
+        controller_.remove_item(sku);
+        break;
+      }
+      case 4: {
+        transition(MenuState::ADMIN_EDIT_USER);
+        break;
+      }
+      case 5: {
+        print_users();
+        std::cout << "\nEnter User ID to remove: ";
+        unsigned int id;
+        std::cin >> id;
+        controller_.remove_user(id);
+        break;
+      }
+      case 6: { transition(MenuState::MAIN); break; }
+      default: { std::cout << "Invalid input: " << input << std::endl; break; }
+  }
+}
+
+void View::admin_add_item_state() {
+  unsigned int sku;
+  unsigned long quantity;
+  float price;
+  std::string name;
+  std::string description;
+  std::cout << "Enter SKU: ";
+  std::cin >> sku;
+  std::cout << "Enter quantity: ";
+  std::cin >> quantity;
+  std::cout << "Enter price: ";
+  std::cin >> price;
+  std::cout << "Enter name: ";
+  std::cin.ignore();
+  std::getline(std::cin, name);
+  std::cout << "Enter description: ";
+  std::getline(std::cin, description);
+  controller_.add_item({sku, quantity, price, name, description});
+  transition(previous_state_);
+}
+
+void View::admin_edit_item_state() {
+    unsigned int sku;
+    std::cout << "Enter SKU: ";
+    std::cin >> sku;
+
+    auto ret = controller_.get_service_manager().get_item_service()->get_item(sku);
+    if (ret == nullptr) {
+        std::cout << "Could not find item by SKU " << sku << std::endl;
+        transition(previous_state_);
+        return;
+    }
+    Item item = *ret;
+
+    print_item_list_header();
+    std::cout << std::setw(8) << item.get_sku()
+              << std::setw(16) << item.get_name()
+              << std::setw(8) << item.get_quantity()
+              << std::setw(8) << item.get_price()
+              << std::setw(64) << item.get_description()
+              << std::endl;
+
+    std::cout << "1. SKU\n"
+              << "2. Name\n"
+              << "3. Quantity\n"
+              << "4. Price\n"
+              << "5. Description\n"
+              << "6. Exit edit menu.\n";
+
+    int input = -1;
+    std::cin >> input;
+    switch(input) {
+        case 1: {
+            unsigned int sku;
+            std::cout << "Enter SKU: ";
+            std::cin >> sku;
+            item.set_sku(sku);
+            break;
+        }
+        case 2: {
+            std::string name;
+            std::cout << "Enter item name: ";
+            std::cin.ignore();
+            std::getline(std::cin, name);
+            item.set_name(name);
+            break;
+        }
+        case 3: {
+            unsigned int quantity;
+            std::cout << "Enter quantity: ";
+            std::cin >> quantity;
+            item.set_quantity(quantity);
+            break;
+        }
+        case 4: {
+            float price;
+            std::cout << "Enter price: ";
+            std::cin >> price;
+            item.set_price(price);
+            break;
+        }
+        case 5: {
+            std::string description;
+            std::cout << "Enter item description: ";
+            std::cin.ignore();
+            std::getline(std::cin, description);
+            item.set_description(description);
+            break;
+        }
+        case 6: {
+            transition(MenuState::ADMIN);
+            return;
+        }
+        default: { std::cout << "Invalid input: " << input << std::endl; break; }
+    }
+    ret = controller_.get_service_manager().get_item_service()->update_item(item);
+    if (ret == nullptr) {
+        std::cout << "Item update failed.\n";
+    }
+}
+
+void View::admin_edit_user_state() {
+
 }
 
 void View::print_cart() const noexcept {
@@ -268,6 +403,32 @@ void View::print_cart() const noexcept {
     }
   }
 }
+
+void View::print_users() const noexcept {
+  const auto& users = controller_.get_service_manager().get_user_service()->get_users();
+  std::cout << std::left
+            << std::setw(5) << "ID"
+            << std::setw(16) << "Username"
+            << std::setw(8) << "Admin?"
+            << std::endl;
+  for (const auto& user : users) {
+    std::cout << std::setw(5) << user->get_id()
+              << std::setw(16) << user->get_username()
+              << std::setw(8) << (user->is_admin() ? 'X' : ' ')
+              << std::endl;
+  }
+}
+
+void View::print_item_list_header() const noexcept {
+    std::cout << std::left
+              << std::setw(8) << "SKU"
+              << std::setw(16) << "Item Name"
+              << std::setw(8) << "Qty."
+              << std::setw(8) << "Price"
+              << std::setw(64) << "Description"
+              << std::endl;
+}
+
 
 void View::transition(MenuState state) noexcept {
     previous_state_ = state_;

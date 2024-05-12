@@ -24,6 +24,8 @@
                    displayName="Resource Files"
                    projectFiles="true">
       <itemPath>item_db.bin</itemPath>
+      <itemPath>order_db.bin</itemPath>
+      <itemPath>user_db.bin</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -55,8 +57,6 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>order_db.bin</itemPath>
-    <itemPath>user_db.bin</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
