@@ -53,7 +53,9 @@ const Order* OrderService::submit_order(const Order& order) {
   auto res = repo_.create_row(order.get_order_num(), order);
   if (res == nullptr) { return nullptr; }
   for (const auto& [sku, quantity] : order.get_items()) {
-//    item_service_.reduce_quantity(sku, quantity);
+      Item item = *item_service_.get_item(sku);
+      item.set_quantity(item.get_quantity() - quantity);
+      item_service_.update_item(item);
   }
 
   return repo_.create_row(order.get_order_num(), order);

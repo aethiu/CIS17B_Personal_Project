@@ -14,7 +14,7 @@
 
 class OrderService {
 public:
-    OrderService(OrderRepository& repository, const ItemService &item_service)
+    OrderService(OrderRepository& repository, ItemService &item_service)
     : item_service_(item_service)
     , repo_(repository)
     { }
@@ -35,7 +35,7 @@ private:
     static constexpr float shipping_cost_ = 10.00f;
 
     OrderRepository& repo_;
-    const ItemService& item_service_;
+    ItemService& item_service_;
 
 };
 
