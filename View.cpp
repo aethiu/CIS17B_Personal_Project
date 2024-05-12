@@ -224,7 +224,7 @@ void View::checkout_state() {
 }
 
 void View::admin_state() {
-  if (!controller_.is_logged_in() || controller_.get_current_user() == nullptr) {
+  if (!controller_.is_logged_in() || !controller_.get_current_user()->is_admin()) {
     std::cout << "You must be logged in as an admin to view the admin panel.\n";
     transition(previous_state_);
     return;
