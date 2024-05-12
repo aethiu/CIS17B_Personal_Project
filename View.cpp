@@ -94,7 +94,7 @@ void View::catalog_state() {
               << std::setw(8) << "Price"
               << std::setw(64) << "Description"
               << std::endl;
-    auto items = controller_.get_service_manager().get_item_service()->get_all_items();
+    auto items = controller_.get_service_manager().get_item_service().get_all_items();
     for (const auto &item: items) {
       std::cout << std::setw(8) << item->get_sku()
                 << std::setw(16) << item->get_name()
@@ -161,11 +161,11 @@ void View::cart_add_item_state() {
   std::cin >> sku;
 
   // Find item by SKU and add to cart
-  auto item = item_service->get_item(sku);
+  auto item = item_service.get_item(sku);
   if (item == nullptr) {
     std::cout << "Could not find item with SKU " << sku << std::endl;
   } else {
-    controller_.add_to_cart(item_service->get_item(sku));
+    controller_.add_to_cart(item_service.get_item(sku));
     std::cout << "Added " << item->get_name() << " to your cart\n";
   }
 
@@ -180,11 +180,11 @@ void View::cart_remove_item_state() {
   std::cin >> sku;
 
   // Find item by SKU and remove from cart
-  auto item = item_service->get_item(sku);
+  auto item = item_service.get_item(sku);
   if (item == nullptr) {
     std::cout << "Could not find item with SKU " << sku << std::endl;
   } else {
-    if (controller_.remove_from_cart(item_service->get_item(sku))) {
+    if (controller_.remove_from_cart(item_service.get_item(sku))) {
       std::cout << "Removed " << item->get_name() << " from your cart\n";
     } else {
       std::cout << "Could not find item with SKU " << sku << " in your cart.\n";
@@ -207,7 +207,6 @@ void View::checkout_state() {
               << "Tax: " << order->get_tax() << std::endl
               << "Shipping: " << order->get_shipping() << std::endl
               << "Total: " << order->get_total() << std::endl;
-
 
     std::cout << std::endl
               << "1. Submit order\n"
@@ -302,7 +301,7 @@ void View::admin_edit_item_state() {
     std::cout << "Enter SKU: ";
     std::cin >> sku;
 
-    auto ret = controller_.get_service_manager().get_item_service()->get_item(sku);
+    auto ret = controller_.get_service_manager().get_item_service().get_item(sku);
     if (ret == nullptr) {
         std::cout << "Could not find item by SKU " << sku << std::endl;
         transition(previous_state_);
@@ -371,7 +370,7 @@ void View::admin_edit_item_state() {
         }
         default: { std::cout << "Invalid input: " << input << std::endl; break; }
     }
-    ret = controller_.get_service_manager().get_item_service()->update_item(item);
+    ret = controller_.get_service_manager().get_item_service().update_item(item);
     if (ret == nullptr) {
         std::cout << "Item update failed.\n";
     }
@@ -405,7 +404,7 @@ void View::print_cart() const noexcept {
 }
 
 void View::print_users() const noexcept {
-  const auto& users = controller_.get_service_manager().get_user_service()->get_users();
+  const auto& users = controller_.get_service_manager().get_user_service().get_users();
   std::cout << std::left
             << std::setw(5) << "ID"
             << std::setw(16) << "Username"

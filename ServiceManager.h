@@ -32,9 +32,9 @@ private:
     { }
 
 public:
-    UserService* get_user_service() { return &user_service_; }
-    ItemService* get_item_service() { return &item_service_; }
-    OrderService* get_order_service() { return &order_service_; }
+    UserService& get_user_service() { return user_service_; }
+    ItemService& get_item_service() { return item_service_; }
+    OrderService& get_order_service() { return order_service_; }
 private:
     ItemRepository item_repo_;
     UserRepository user_repo_;
