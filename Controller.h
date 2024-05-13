@@ -14,7 +14,7 @@
 
 class Controller {
 public:
-    Controller(ServiceManager &service_manager) : service_manager_(&service_manager) { }
+    Controller(ServiceManager &service_manager) : service_manager_(service_manager) { }
 
     /** \brief Login a user as the current user
      *
@@ -23,7 +23,7 @@ public:
      * @return True if login is successful or false otherwise
      */
     bool login(std::string username, std::string password) {
-        auto user = service_manager_->get_user_service().find_user(username, password);
+        auto user = service_manager_.get_user_service().find_user(username, password);
         if (user == nullptr) return false;
         current_user_ = user;
         return true;
@@ -35,12 +35,12 @@ public:
     void submit_order();
 
     // Admin actions
-    const Item* add_item(const Item &item) { return service_manager_->get_item_service().add_item(item); }
-    void remove_item(unsigned int sku) { service_manager_->get_item_service().remove_item(sku); }
-    const User* add_user(const User &user) { return service_manager_->get_user_service().add_user(user); }
-    void remove_user(unsigned int id) { service_manager_->get_user_service().remove_user(id); }
+    const Item* add_item(const Item &item) { return service_manager_.get_item_service().add_item(item); }
+    void remove_item(unsigned int sku) { service_manager_.get_item_service().remove_item(sku); }
+    const User* add_user(const User &user) { return service_manager_.get_user_service().add_user(user); }
+    void remove_user(unsigned int id) { service_manager_.get_user_service().remove_user(id); }
 
-    ServiceManager& get_service_manager() noexcept { return *service_manager_; };
+    ServiceManager& get_service_manager() noexcept { return service_manager_; };
     const Order* get_order() const { return &order_; }
     const Cart& get_cart() const { return cart_; }
     const User* get_current_user() const { return current_user_; }
@@ -48,7 +48,7 @@ public:
     bool is_logged_in() const noexcept { return current_user_ != nullptr; }
 
 private:
-    ServiceManager *service_manager_ = nullptr;
+    ServiceManager &service_manager_;
     const User* current_user_ = nullptr;
     Cart cart_;
     Order order_;
