@@ -1,0 +1,37 @@
+\doxysection{Item\+Service.\+h}
+\hypertarget{ItemService_8h_source}{}\label{ItemService_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ ItemService.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ April\ 26,\ 2024,\ 11:57 AM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ ITEMSERVICE\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ITEMSERVICE\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Item.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}ItemRepository.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classItemService}{ItemService}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classItemService}{ItemService}}(\mbox{\hyperlink{classItemRepository}{ItemRepository}}\ \&repo)\ :\ repo\_(repo)\ \{\ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ std::vector<const\ Item*>\ get\_all\_items()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ std::move(repo\_.\mbox{\hyperlink{classRepository_ad2e4e9fbe49613e8387659bdc7222ec4}{read\_table}}());\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}*\ get\_item(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sku)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ repo\_.\mbox{\hyperlink{classRepository_a508c73896c2f47e3b05e26d531063673}{read\_row}}(sku);\ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}*\ add\_item(\textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}\ \&item)\ \{\ \textcolor{keywordflow}{return}\ repo\_.\mbox{\hyperlink{classRepository_aab7f9899da2354d82df9b78bc50f937e}{create\_row}}(item.get\_sku(),\ item);\ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ remove\_item(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sku)\ \{\ repo\_.\mbox{\hyperlink{classRepository_a9be51af6584661507a80cb04448182b4}{delete\_row}}(sku);\ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}*\ update\_item(\textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}\&\ item)\ \{\ \textcolor{keywordflow}{return}\ repo\_.\mbox{\hyperlink{classRepository_ae026d1b7123239533050a7d2c884841b}{update\_row}}(item.get\_sku(),\ item);\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{classItemRepository}{ItemRepository}}\&\ repo\_;}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ ITEMSERVICE\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00032\ }
+
+\end{DoxyCode}

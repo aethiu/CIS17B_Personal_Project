@@ -1,0 +1,33 @@
+\doxysection{Order\+Repository.\+h}
+\hypertarget{OrderRepository_8h_source}{}\label{OrderRepository_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ OrderRepository.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ May\ 7,\ 2024,\ 9:39 AM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ ORDERREPOSITORY\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ORDERREPOSITORY\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Repository.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Order.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classOrderRepository}{OrderRepository}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRepository}{Repository}}<Order::OrderNum\ ,\ Order>\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classOrderRepository}{OrderRepository}}()\ =\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classOrderRepository}{OrderRepository}}(std::string\ db\_filename)\ :\ \mbox{\hyperlink{classRepository}{Repository<Order::OrderNum,\ Order>}}(db\_filename)\ \{\ \mbox{\hyperlink{classRepository_a2314bf2689ded6b5cce778066fb317a7}{load}}();\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{void}\ load\_row(std::ifstream\&)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{void}\ save\_row(std::ofstream\&,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classOrder}{Order}}\&)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ ORDERREPOSITORY\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00028\ }
+
+\end{DoxyCode}

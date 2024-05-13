@@ -1,0 +1,33 @@
+\doxysection{User\+Repository.\+h}
+\hypertarget{UserRepository_8h_source}{}\label{UserRepository_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ UserRepository.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ May\ 5,\ 2024,\ 6:59 PM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ USERREPOSITORY\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ USERREPOSITORY\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Repository.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}User.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUserRepository}{UserRepository}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRepository}{Repository}}<unsigned\ int,\ User>\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classUserRepository}{UserRepository}}()\ =\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classUserRepository}{UserRepository}}(std::string\ db\_filename)\ :\ \mbox{\hyperlink{classRepository}{Repository<unsigned\ int,\ User>}}(std::move(db\_filename))\ \{\ \mbox{\hyperlink{classRepository_a2314bf2689ded6b5cce778066fb317a7}{load}}();\ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}*\ find\_user(\textcolor{keyword}{const}\ std::string\&\ username,\ \textcolor{keyword}{const}\ std::string\&\ password)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ load\_row(std::ifstream\ \&db)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ save\_row(std::ofstream\ \&db,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}\&\ row)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ USERREPOSITORY\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00028\ }
+
+\end{DoxyCode}

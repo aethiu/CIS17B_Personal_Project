@@ -1,0 +1,40 @@
+\doxysection{User\+Service.\+h}
+\hypertarget{UserService_8h_source}{}\label{UserService_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ UserService.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ May\ 1,\ 2024,\ 6:43 PM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ USERSERVICE\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ USERSERVICE\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}User.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}UserRepository.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUserService}{UserService}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classUserService}{UserService}}(\mbox{\hyperlink{classUserRepository}{UserRepository}}\&\ repo)\ :\ repo\_(repo)\ \{\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}*\ get\_user(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ repo\_.\mbox{\hyperlink{classRepository_a508c73896c2f47e3b05e26d531063673}{read\_row}}(\textcolor{keywordtype}{id});\ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}*\ find\_user(std::string\ username,\ std::string\ password)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ repo\_.find\_user(username,\ password);\ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}*\ add\_user(\textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}\&\ user)\ \{\ \textcolor{keywordflow}{return}\ repo\_.\mbox{\hyperlink{classRepository_aab7f9899da2354d82df9b78bc50f937e}{create\_row}}(user.get\_id(),\ user);\ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}*\ update\_user(\textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}\&\ user)\ \{\ \textcolor{keywordflow}{return}\ repo\_.\mbox{\hyperlink{classRepository_ae026d1b7123239533050a7d2c884841b}{update\_row}}(user.get\_id(),\ user);\ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ remove\_user(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{\ repo\_.\mbox{\hyperlink{classRepository_a9be51af6584661507a80cb04448182b4}{delete\_row}}(\textcolor{keywordtype}{id});\ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<const\ User*>\ get\_users()\ \{\ \textcolor{keywordflow}{return}\ std::move(repo\_.\mbox{\hyperlink{classRepository_ad2e4e9fbe49613e8387659bdc7222ec4}{read\_table}}());\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classUserService_a5ae05977c99082bb3980c360ad90b9e4}{get\_new\_id}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classUserRepository}{UserRepository}}\&\ repo\_;}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ USERSERVICE\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00042\ }
+
+\end{DoxyCode}

@@ -1,0 +1,66 @@
+\doxysection{View.\+h}
+\hypertarget{View_8h_source}{}\label{View_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ View.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstropng}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ May\ 1,\ 2024,\ 6:29 PM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ VIEW\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ VIEW\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Controller.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classView}{View}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classView}{View}}(\mbox{\hyperlink{classController}{Controller}}\ \&controller)\ :\ controller\_(controller)\ \{\}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ show();}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classController}{Controller}}\ \&controller\_\ ;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ exit\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{enum}\ MenuState\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ MAIN,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ LOGIN,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ REGISTER,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ CATALOG,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ CART,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ CART\_ADD\_ITEM,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ CART\_REMOVE\_ITEM,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ CHECKOUT,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ ADMIN,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ ADMIN\_ADD\_ITEM,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ ADMIN\_EDIT\_ITEM,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ ADMIN\_ADD\_USER,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ ADMIN\_EDIT\_USER,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ EXIT}
+\DoxyCodeLine{00036\ \ \ \ \ \}\ state\_\ =\ MenuState::MAIN;}
+\DoxyCodeLine{00037\ \ \ \ \ MenuState\ previous\_state\_\ =\ state\_;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ menu\_state();}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ login\_state();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ register\_state();}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ catalog\_state();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ cart\_state();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ cart\_remove\_item\_state();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ cart\_add\_item\_state();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ checkout\_state();}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ admin\_state();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ admin\_add\_item\_state();}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ admin\_edit\_item\_state();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ admin\_add\_user\_state();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ admin\_edit\_user\_state();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ print\_cart()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ print\_users()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ print\_item\_list\_header()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ transition(MenuState)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ VIEW\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00061\ }
+
+\end{DoxyCode}

@@ -1,0 +1,29 @@
+\doxysection{Order\+Service Class Reference}
+\hypertarget{classOrderService}{}\label{classOrderService}\index{OrderService@{OrderService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classOrderService_ac6b413c6fdb1c2932e672495a763da5a}\label{classOrderService_ac6b413c6fdb1c2932e672495a763da5a} 
+{\bfseries Order\+Service} (\mbox{\hyperlink{classOrderRepository}{Order\+Repository}} \&repository, \mbox{\hyperlink{classItemService}{Item\+Service}} \&item\+\_\+service)
+\item 
+\Hypertarget{classOrderService_a26b239dce4a5b3dd7590a5c7d0b84c04}\label{classOrderService_a26b239dce4a5b3dd7590a5c7d0b84c04} 
+float {\bfseries get\+\_\+tax\+\_\+rate} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns tax rate. \end{DoxyCompactList}\item 
+\Hypertarget{classOrderService_a77ba52cd5860461ad33ad9b3a276c99a}\label{classOrderService_a77ba52cd5860461ad33ad9b3a276c99a} 
+float {\bfseries get\+\_\+shipping\+\_\+cost} () noexcept
+\begin{DoxyCompactList}\small\item\em Returns shipping fee. \end{DoxyCompactList}\item 
+\Hypertarget{classOrderService_aa95120d5a8cfa648efbde503a39147a8}\label{classOrderService_aa95120d5a8cfa648efbde503a39147a8} 
+\mbox{\hyperlink{classOrder}{Order}} {\bfseries create\+\_\+order} (const \mbox{\hyperlink{classUser}{User}} \&, const \mbox{\hyperlink{classCart}{Cart}} \&)
+\item 
+\Hypertarget{classOrderService_a3eb090967b65198b54fc669e10e6f6b3}\label{classOrderService_a3eb090967b65198b54fc669e10e6f6b3} 
+Order\+::\+Order\+Num {\bfseries get\+\_\+new\+\_\+order\+\_\+num} () const
+\item 
+\Hypertarget{classOrderService_ad4299b8395198aec6c47f3d1ab9193d5}\label{classOrderService_ad4299b8395198aec6c47f3d1ab9193d5} 
+const \mbox{\hyperlink{classOrder}{Order}} \texorpdfstring{$\ast$}{*} {\bfseries submit\+\_\+order} (const \mbox{\hyperlink{classOrder}{Order}} \&)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Order\+Service.\+h\item 
+Order\+Service.\+cpp\end{DoxyCompactItemize}

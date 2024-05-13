@@ -1,0 +1,46 @@
+\doxysection{User.\+h}
+\hypertarget{User_8h_source}{}\label{User_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ User.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ April\ 26,\ 2024,\ 10:56 AM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ USER\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ USER\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUser}{User}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classUser}{User}}()\ =\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classUser}{User}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{bool}\ is\_admin,\ std::string\ username,\ std::string\ password)}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ :\ id\_(\textcolor{keywordtype}{id}),\ username\_(std::move(username)),\ password\_(std::move(password)),\ is\_admin\_(is\_admin)\ \{\ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ get\_id()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ id\_;\ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_admin()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ is\_admin\_;\ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ get\_username()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ username\_;\ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ get\_password()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ password\_;\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_id(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \textcolor{keyword}{noexcept}\ \{\ id\_\ =\ id;\ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_admin(\textcolor{keywordtype}{bool}\ is\_admin)\ \textcolor{keyword}{noexcept}\ \{\ is\_admin\_\ =\ is\_admin;\ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_username(std::string\ username)\ \textcolor{keyword}{noexcept}\ \{\ username\_\ =\ std::move(username);\ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_password(std::string\ password)\ \textcolor{keyword}{noexcept}\ \{\ password\_\ =\ std::move(password);\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}\&\ user)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ rhs)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ id\_\ ==\ rhs;\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ id\_\ =\ 0;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_admin\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00036\ \ \ \ \ std::string\ username\_;}
+\DoxyCodeLine{00037\ \ \ \ \ std::string\ password\_;}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ USER\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00041\ }
+
+\end{DoxyCode}

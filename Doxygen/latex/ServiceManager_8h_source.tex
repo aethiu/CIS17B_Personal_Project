@@ -1,0 +1,52 @@
+\doxysection{Service\+Manager.\+h}
+\hypertarget{ServiceManager_8h_source}{}\label{ServiceManager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ ServiceManager.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ May\ 1,\ 2024,\ 6:54 PM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ SERVICEMANAGER\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SERVICEMANAGER\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}UserService.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}ItemService.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}OrderService.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classServiceManager}{ServiceManager}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classServiceManager}{ServiceManager}}\&\ instance()\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classServiceManager}{ServiceManager}}\ instance(\textcolor{stringliteral}{"{}user\_db.bin"{}},\ \textcolor{stringliteral}{"{}item\_db.bin"{}},\ \textcolor{stringliteral}{"{}order\_db.bin"{}});}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classServiceManager}{ServiceManager}}(std::string\ user\_db\_filename,\ std::string\ item\_db\_filename,\ std::string\ order\_db\_filename)}
+\DoxyCodeLine{00026\ \ \ \ \ :\ user\_repo\_(std::move(user\_db\_filename))}
+\DoxyCodeLine{00027\ \ \ \ \ ,\ item\_repo\_\{std::move(item\_db\_filename)\}}
+\DoxyCodeLine{00028\ \ \ \ \ ,\ order\_repo\_(std::move(order\_db\_filename))}
+\DoxyCodeLine{00029\ \ \ \ \ ,\ user\_service\_\{user\_repo\_\}}
+\DoxyCodeLine{00030\ \ \ \ \ ,\ item\_service\_\{item\_repo\_\}}
+\DoxyCodeLine{00031\ \ \ \ \ ,\ order\_service\_\{order\_repo\_,\ item\_service\_\}}
+\DoxyCodeLine{00032\ \ \ \ \ \{\ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classUserService}{UserService}}\&\ get\_user\_service()\ \{\ \textcolor{keywordflow}{return}\ user\_service\_;\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classItemService}{ItemService}}\&\ get\_item\_service()\ \{\ \textcolor{keywordflow}{return}\ item\_service\_;\ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classOrderService}{OrderService}}\&\ get\_order\_service()\ \{\ \textcolor{keywordflow}{return}\ order\_service\_;\ \}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classItemRepository}{ItemRepository}}\ item\_repo\_;}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classUserRepository}{UserRepository}}\ user\_repo\_;}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classOrderRepository}{OrderRepository}}\ order\_repo\_;}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classUserService}{UserService}}\ user\_service\_;}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classItemService}{ItemService}}\ item\_service\_;}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classOrderService}{OrderService}}\ order\_service\_;}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SERVICEMANAGER\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00048\ }
+
+\end{DoxyCode}

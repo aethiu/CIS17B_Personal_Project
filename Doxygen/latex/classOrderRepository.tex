@@ -1,0 +1,50 @@
+\doxysection{Order\+Repository Class Reference}
+\hypertarget{classOrderRepository}{}\label{classOrderRepository}\index{OrderRepository@{OrderRepository}}
+Inheritance diagram for Order\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classOrderRepository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classOrderRepository_a49998b7d7419d8a7fed7fe361491264b}\label{classOrderRepository_a49998b7d7419d8a7fed7fe361491264b} 
+{\bfseries Order\+Repository} (std\+::string db\+\_\+filename)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRepository}{Repository$<$ Order\+::\+Order\+Num, Order $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Repository} (std\+::string db\+\_\+filename)
+\item 
+virtual const \mbox{\hyperlink{classOrder}{Order}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository_aab7f9899da2354d82df9b78bc50f937e}{create\+\_\+row}} (const Order\+::\+Order\+Num \&key, const \mbox{\hyperlink{classOrder}{Order}} \&value)
+\begin{DoxyCompactList}\small\item\em Create a new row in the table. \end{DoxyCompactList}\item 
+virtual const \mbox{\hyperlink{classOrder}{Order}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository_a508c73896c2f47e3b05e26d531063673}{read\+\_\+row}} (const Order\+::\+Order\+Num \&key) const
+\begin{DoxyCompactList}\small\item\em Retrieve a single row. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ const \mbox{\hyperlink{classOrder}{Order}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classRepository_ad2e4e9fbe49613e8387659bdc7222ec4}{read\+\_\+table}} () const
+\begin{DoxyCompactList}\small\item\em Get all data in a table. \end{DoxyCompactList}\item 
+virtual const \mbox{\hyperlink{classOrder}{Order}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository_ae026d1b7123239533050a7d2c884841b}{update\+\_\+row}} (const Order\+::\+Order\+Num \&key, const \mbox{\hyperlink{classOrder}{Order}} \&value)
+\begin{DoxyCompactList}\small\item\em Update table row at key with data from value member variables. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classRepository_a9be51af6584661507a80cb04448182b4}{delete\+\_\+row}} (const Order\+::\+Order\+Num \&key)
+\begin{DoxyCompactList}\small\item\em Deletes a row from the table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classRepository}{Repository$<$ Order\+::\+Order\+Num, Order $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries load} ()
+\begin{DoxyCompactList}\small\item\em Loads data from binary file into table storage. \end{DoxyCompactList}\item 
+void {\bfseries save} () const
+\begin{DoxyCompactList}\small\item\em Writes data to binary file from table storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classRepository}{Repository$<$ Order\+::\+Order\+Num, Order $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries db\+\_\+filename\+\_\+}
+\item 
+std\+::unordered\+\_\+map$<$ Order\+::\+Order\+Num, \mbox{\hyperlink{classOrder}{Order}} $>$ {\bfseries table\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Order\+Repository.\+h\item 
+Order\+Repository.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,50 @@
+\doxysection{Order.\+h}
+\hypertarget{Order_8h_source}{}\label{Order_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ Order.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ April\ 26,\ 2024,\ 11:03 AM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ ORDER\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ORDER\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Cart.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}User.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classOrder}{Order}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{using\ }OrderNum\ =\ \textcolor{keywordtype}{unsigned}\ long;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classOrder}{Order}}()\ =\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classOrder}{Order}}(OrderNum\ order\_number,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ user\_id,\ \textcolor{keywordtype}{float}\ subtotal,\ \textcolor{keywordtype}{float}\ tax,\ \textcolor{keywordtype}{float}\ shipping,\ \textcolor{keywordtype}{float}\ total,\ \textcolor{keyword}{const}\ std::string\ date,\ std::map<unsigned\ int,\ unsigned\ long>\ items);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ OrderNum\ get\_order\_num()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ order\_num\_;\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classOrder_a852b63b33085450ebfd29846f9e269a3}{get\_user\_id}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ user\_id\_;\ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{const}\ std::map<unsigned\ int,\ unsigned\ long>\&\ \mbox{\hyperlink{classOrder_a98459f5acb25f70194c41f71ea01041d}{get\_items}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ items\_;\ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classOrder_a0dbb4df1840338bee4c3ca02ce9d35d5}{get\_subtotal}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ subtotal\_;\ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classOrder_a5fb7db3271caad092913b56ce61da2ab}{get\_tax}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ tax\_;\ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classOrder_aa0b3cd40a2c1f1d2d4c8af017398f093}{get\_shipping}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ shipping\_;\ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classOrder_a0f2d8a15d0eb8687abc48e7e78e430d1}{get\_total}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ total\_;\ \}}
+\DoxyCodeLine{00048\ \ \ \ \ std::string\ \mbox{\hyperlink{classOrder_a70c2c830aa4cc57b726ad162efdd5104}{get\_date}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ date\_;\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(OrderNum\ order\_num)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ order\_num\_\ ==\ order\_num;\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ OrderNum\ order\_num\_\ =\ -\/1;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ user\_id\_\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{float}\ subtotal\_\ =\ 0.0f,\ tax\_\ =\ 0.0f,\ shipping\_\ =\ 0.0f,\ total\_\ =\ 0.0f;}
+\DoxyCodeLine{00057\ \ \ \ \ std::string\ date\_\ =\ \textcolor{stringliteral}{"{}YYYY-\/mm-\/ddTHH:MM:SS"{}};\ \textcolor{comment}{//\ ISO\ 8601\ format\ in\ UTC}}
+\DoxyCodeLine{00058\ \ \ \ \ std::map<unsigned\ int,\ unsigned\ long>\ items\_;\ \textcolor{comment}{//\ std::map\ has\ a\ copy\ assignment\ overload,\ but\ std::unordred\_map's\ is\ deleted}}
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ ORDER\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00062\ }
+
+\end{DoxyCode}

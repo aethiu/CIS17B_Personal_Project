@@ -1,0 +1,74 @@
+\doxysection{Order Class Reference}
+\hypertarget{classOrder}{}\label{classOrder}\index{Order@{Order}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classOrder_a7ae68561349c781b4a9c40f13d4e3389}\label{classOrder_a7ae68561349c781b4a9c40f13d4e3389} 
+using {\bfseries Order\+Num} = unsigned long
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOrder_a1debc42208caea40b759e0b307087ad5}{Order}} (Order\+Num order\+\_\+number, unsigned int user\+\_\+id, float subtotal, float tax, float shipping, float total, const std\+::string date, std\+::map$<$ unsigned int, unsigned long $>$ items)
+\begin{DoxyCompactList}\small\item\em Constructs an order. \end{DoxyCompactList}\item 
+\Hypertarget{classOrder_a3ed3e968a266e5799f4592238b9e8107}\label{classOrder_a3ed3e968a266e5799f4592238b9e8107} 
+Order\+Num {\bfseries get\+\_\+order\+\_\+num} () const noexcept
+\item 
+\Hypertarget{classOrder_a852b63b33085450ebfd29846f9e269a3}\label{classOrder_a852b63b33085450ebfd29846f9e269a3} 
+const unsigned int {\bfseries get\+\_\+user\+\_\+id} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns the user that created the order. \end{DoxyCompactList}\item 
+\Hypertarget{classOrder_a98459f5acb25f70194c41f71ea01041d}\label{classOrder_a98459f5acb25f70194c41f71ea01041d} 
+const std\+::map$<$ unsigned int, unsigned long $>$ \& {\bfseries get\+\_\+items} () const
+\begin{DoxyCompactList}\small\item\em Returns the items in the order as a map of SKUs to quantities. \end{DoxyCompactList}\item 
+\Hypertarget{classOrder_a0dbb4df1840338bee4c3ca02ce9d35d5}\label{classOrder_a0dbb4df1840338bee4c3ca02ce9d35d5} 
+float {\bfseries get\+\_\+subtotal} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns the subtotal. \end{DoxyCompactList}\item 
+\Hypertarget{classOrder_a5fb7db3271caad092913b56ce61da2ab}\label{classOrder_a5fb7db3271caad092913b56ce61da2ab} 
+float {\bfseries get\+\_\+tax} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns the tax. \end{DoxyCompactList}\item 
+\Hypertarget{classOrder_aa0b3cd40a2c1f1d2d4c8af017398f093}\label{classOrder_aa0b3cd40a2c1f1d2d4c8af017398f093} 
+float {\bfseries get\+\_\+shipping} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns the shipping. \end{DoxyCompactList}\item 
+\Hypertarget{classOrder_a0f2d8a15d0eb8687abc48e7e78e430d1}\label{classOrder_a0f2d8a15d0eb8687abc48e7e78e430d1} 
+float {\bfseries get\+\_\+total} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns the calculated total. \end{DoxyCompactList}\item 
+\Hypertarget{classOrder_a70c2c830aa4cc57b726ad162efdd5104}\label{classOrder_a70c2c830aa4cc57b726ad162efdd5104} 
+std\+::string {\bfseries get\+\_\+date} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns the ISO 8601 formatted date that the order was created. \end{DoxyCompactList}\item 
+\Hypertarget{classOrder_a932b7fe0b7f5672d641e6ac5a50a3e13}\label{classOrder_a932b7fe0b7f5672d641e6ac5a50a3e13} 
+bool {\bfseries operator==} (Order\+Num order\+\_\+num) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classOrder_a1debc42208caea40b759e0b307087ad5}\label{classOrder_a1debc42208caea40b759e0b307087ad5} 
+\index{Order@{Order}!Order@{Order}}
+\index{Order@{Order}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{Order()}{Order()}}
+{\footnotesize\ttfamily Order\+::\+Order (\begin{DoxyParamCaption}\item[{Order\+Num}]{order\+\_\+number,  }\item[{unsigned int}]{user\+\_\+id,  }\item[{float}]{subtotal,  }\item[{float}]{tax,  }\item[{float}]{shipping,  }\item[{float}]{total,  }\item[{const std\+::string}]{date,  }\item[{std\+::map$<$ unsigned int, unsigned long $>$}]{items }\end{DoxyParamCaption})}
+
+
+
+Constructs an order. 
+
+Clients should use Order\+Service\+::create\+\_\+order() rather than calling this constructor directly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em order\+\_\+number} & \\
+\hline
+{\em user} & \\
+\hline
+{\em subtotal} & \\
+\hline
+{\em date} & \\
+\hline
+{\em items} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Order.\+h\item 
+Order.\+cpp\end{DoxyCompactItemize}

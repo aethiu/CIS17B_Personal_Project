@@ -1,0 +1,126 @@
+\doxysection{Cart Class Reference}
+\hypertarget{classCart}{}\label{classCart}\index{Cart@{Cart}}
+
+
+Shopping cart.  
+
+
+
+
+{\ttfamily \#include $<$Cart.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classCart_a8a7403d775cc57f12199562789cfaf42}{add\+\_\+item}} (const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Adds an item to the cart or increase an quantity of an item in the cart. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCart_ac645770453c4f0a9bffa02677178533d}{remove\+\_\+item}} (const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Removes an item from the cart. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{classCart_a0d66dea1f7504e5979b17e510290100f}{set\+\_\+quantity}} (const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*}item, unsigned long quantity)
+\begin{DoxyCompactList}\small\item\em Set the quantity of an item. \end{DoxyCompactList}\item 
+\Hypertarget{classCart_a0a028befa26a5ea668984861bb528bb0}\label{classCart_a0a028befa26a5ea668984861bb528bb0} 
+unsigned long {\bfseries set\+\_\+quantity} (unsigned int sku, unsigned long quantity)
+\item 
+\Hypertarget{classCart_ae2231302ca7b7a216b5ec6c4a70be54c}\label{classCart_ae2231302ca7b7a216b5ec6c4a70be54c} 
+unsigned long {\bfseries get\+\_\+quantity} (const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*}item) const
+\begin{DoxyCompactList}\small\item\em Get the quantity of an item in the cart. \end{DoxyCompactList}\item 
+\Hypertarget{classCart_af5373b37a8d68fe961cc4e4fa3711d6a}\label{classCart_af5373b37a8d68fe961cc4e4fa3711d6a} 
+unsigned long {\bfseries get\+\_\+quantity} (unsigned int sku) const
+\item 
+\Hypertarget{classCart_ae046dd0e56b3d926d69df0e64c5b64d1}\label{classCart_ae046dd0e56b3d926d69df0e64c5b64d1} 
+const std\+::map$<$ unsigned int, unsigned long $>$ \& {\bfseries get\+\_\+quantities} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get a map of SKUs that maps an item\textquotesingle{}s SKU to the quantity of the item in the cart. \end{DoxyCompactList}\item 
+const std\+::vector$<$ const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{classCart_a915a70178d7a5f3ed02d9f0d5ab6e392}{get\+\_\+items}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the items in the cart. \end{DoxyCompactList}\item 
+\Hypertarget{classCart_a2d3c6585c81a1ecadb103d667857a1c8}\label{classCart_a2d3c6585c81a1ecadb103d667857a1c8} 
+size\+\_\+t {\bfseries get\+\_\+num\+\_\+items} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the total number of items in the cart, e.\+g. sum of the quantities. \end{DoxyCompactList}\item 
+\Hypertarget{classCart_a04a561a878721584ce04413a21082507}\label{classCart_a04a561a878721584ce04413a21082507} 
+float {\bfseries get\+\_\+subtotal} () const noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Shopping cart. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCart_a8a7403d775cc57f12199562789cfaf42}\label{classCart_a8a7403d775cc57f12199562789cfaf42} 
+\index{Cart@{Cart}!add\_item@{add\_item}}
+\index{add\_item@{add\_item}!Cart@{Cart}}
+\doxysubsubsection{\texorpdfstring{add\_item()}{add\_item()}}
+{\footnotesize\ttfamily void Cart\+::add\+\_\+item (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption})}
+
+
+
+Adds an item to the cart or increase an quantity of an item in the cart. 
+
+Returns immediately if item is nullptr.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \doxylink{classItem}{Item} to add to the cart \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCart_a915a70178d7a5f3ed02d9f0d5ab6e392}\label{classCart_a915a70178d7a5f3ed02d9f0d5ab6e392} 
+\index{Cart@{Cart}!get\_items@{get\_items}}
+\index{get\_items@{get\_items}!Cart@{Cart}}
+\doxysubsubsection{\texorpdfstring{get\_items()}{get\_items()}}
+{\footnotesize\ttfamily const std\+::vector$<$ const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*} $>$ \& Cart\+::get\+\_\+items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Get the items in the cart. 
+
+Each item is unique, i.\+e. quantity of each item in the cart cannot be deduced from the returned vector. To get the quantity of each item, use \doxylink{classCart_ae046dd0e56b3d926d69df0e64c5b64d1}{Cart\+::get\+\_\+quantities}
+
+\begin{DoxyReturn}{Returns}
+Vector of items in cart 
+\end{DoxyReturn}
+\Hypertarget{classCart_ac645770453c4f0a9bffa02677178533d}\label{classCart_ac645770453c4f0a9bffa02677178533d} 
+\index{Cart@{Cart}!remove\_item@{remove\_item}}
+\index{remove\_item@{remove\_item}!Cart@{Cart}}
+\doxysubsubsection{\texorpdfstring{remove\_item()}{remove\_item()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*} Cart\+::remove\+\_\+item (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption})}
+
+
+
+Removes an item from the cart. 
+
+Returns nullptr if item is not in the cart.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \doxylink{classItem}{Item} to remove from the cart \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classItem}{Item} removed from cart or nullptr if no item was removed 
+\end{DoxyReturn}
+\Hypertarget{classCart_a0d66dea1f7504e5979b17e510290100f}\label{classCart_a0d66dea1f7504e5979b17e510290100f} 
+\index{Cart@{Cart}!set\_quantity@{set\_quantity}}
+\index{set\_quantity@{set\_quantity}!Cart@{Cart}}
+\doxysubsubsection{\texorpdfstring{set\_quantity()}{set\_quantity()}}
+{\footnotesize\ttfamily unsigned long Cart\+::set\+\_\+quantity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*}}]{item,  }\item[{unsigned long}]{quantity }\end{DoxyParamCaption})}
+
+
+
+Set the quantity of an item. 
+
+Does not remove an item from the cart if the quantity is set to 0 Returns immediately if item is nullptr
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+{\em quantity} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Updated quantity or 0 if item was not found 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Cart.\+h\item 
+Cart.\+cpp\end{DoxyCompactItemize}

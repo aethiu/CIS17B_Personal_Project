@@ -1,0 +1,81 @@
+\doxysection{Controller Class Reference}
+\hypertarget{classController}{}\label{classController}\index{Controller@{Controller}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classController_a96708260dd581fd54cd2c8284d0ff6de}\label{classController_a96708260dd581fd54cd2c8284d0ff6de} 
+{\bfseries Controller} (\mbox{\hyperlink{classServiceManager}{Service\+Manager}} \&service\+\_\+manager)
+\item 
+bool \mbox{\hyperlink{classController_ac0904fb6ee97c61d74b909db71e3a3fa}{login}} (std\+::string username, std\+::string password)
+\begin{DoxyCompactList}\small\item\em Login a user as the current user. \end{DoxyCompactList}\item 
+\Hypertarget{classController_ada5026a2acec744d6010dd1ce6bcfd8c}\label{classController_ada5026a2acec744d6010dd1ce6bcfd8c} 
+const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} {\bfseries register\+\_\+user} (std\+::string username, std\+::string password)
+\item 
+\Hypertarget{classController_acd6fedd2334215ea90cca14a9eb48c7c}\label{classController_acd6fedd2334215ea90cca14a9eb48c7c} 
+void {\bfseries add\+\_\+to\+\_\+cart} (const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*}item)
+\item 
+\Hypertarget{classController_a276181a45b991c4783ca6e5f6bd8b9c1}\label{classController_a276181a45b991c4783ca6e5f6bd8b9c1} 
+const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*} {\bfseries remove\+\_\+from\+\_\+cart} (const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*}item)
+\item 
+\Hypertarget{classController_a6404cad11d3e00c3931c33ad758add17}\label{classController_a6404cad11d3e00c3931c33ad758add17} 
+const \mbox{\hyperlink{classOrder}{Order}} \texorpdfstring{$\ast$}{*} {\bfseries create\+\_\+order} () noexcept
+\item 
+\Hypertarget{classController_a70c62e705817c8e5c63597a27214c523}\label{classController_a70c62e705817c8e5c63597a27214c523} 
+void {\bfseries submit\+\_\+order} ()
+\item 
+\Hypertarget{classController_a47ce564fdde239690608d101139370ae}\label{classController_a47ce564fdde239690608d101139370ae} 
+const \mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+item} (const \mbox{\hyperlink{classItem}{Item}} \&item)
+\item 
+\Hypertarget{classController_aedbf3070f9a5bf38efe1a84616e7c6ab}\label{classController_aedbf3070f9a5bf38efe1a84616e7c6ab} 
+void {\bfseries remove\+\_\+item} (unsigned int sku)
+\item 
+\Hypertarget{classController_a06f7cc5935b825d8658198f349c42502}\label{classController_a06f7cc5935b825d8658198f349c42502} 
+const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+user} (const \mbox{\hyperlink{classUser}{User}} \&user)
+\item 
+\Hypertarget{classController_a9bce66a92ba583d50bf31581f0538b44}\label{classController_a9bce66a92ba583d50bf31581f0538b44} 
+void {\bfseries remove\+\_\+user} (unsigned int id)
+\item 
+\Hypertarget{classController_a7828ed7059e57bd35a0e077834c8f8c8}\label{classController_a7828ed7059e57bd35a0e077834c8f8c8} 
+\mbox{\hyperlink{classServiceManager}{Service\+Manager}} \& {\bfseries get\+\_\+service\+\_\+manager} () noexcept
+\item 
+\Hypertarget{classController_af0648ba150104dbc7f830fa6247cf1f9}\label{classController_af0648ba150104dbc7f830fa6247cf1f9} 
+const \mbox{\hyperlink{classOrder}{Order}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+order} () const
+\item 
+\Hypertarget{classController_a1354b02abacf8e1256f68c6d1712396d}\label{classController_a1354b02abacf8e1256f68c6d1712396d} 
+const \mbox{\hyperlink{classCart}{Cart}} \& {\bfseries get\+\_\+cart} () const
+\item 
+\Hypertarget{classController_a9d961efc7c4e977f472c5a4cc0be4c18}\label{classController_a9d961efc7c4e977f472c5a4cc0be4c18} 
+const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+current\+\_\+user} () const
+\item 
+\Hypertarget{classController_a3a1d2dae9a0fbdb8227604ff5d74fe0e}\label{classController_a3a1d2dae9a0fbdb8227604ff5d74fe0e} 
+bool {\bfseries is\+\_\+logged\+\_\+in} () const noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classController_ac0904fb6ee97c61d74b909db71e3a3fa}\label{classController_ac0904fb6ee97c61d74b909db71e3a3fa} 
+\index{Controller@{Controller}!login@{login}}
+\index{login@{login}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily bool Controller\+::login (\begin{DoxyParamCaption}\item[{std\+::string}]{username,  }\item[{std\+::string}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Login a user as the current user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \doxylink{classUser}{User} account\textquotesingle{}s username \\
+\hline
+{\em password} & \doxylink{classUser}{User} account\textquotesingle{}s password \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if login is successful or false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Controller.\+h\item 
+Controller.\+cpp\end{DoxyCompactItemize}

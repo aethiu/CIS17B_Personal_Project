@@ -1,0 +1,56 @@
+\doxysection{Controller.\+h}
+\hypertarget{Controller_8h_source}{}\label{Controller_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ Controller.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ April\ 27,\ 2024,\ 5:57 PM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CONTROLLER\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CONTROLLER\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ServiceManager.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}User.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Order.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classController}{Controller}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classController}{Controller}}(\mbox{\hyperlink{classServiceManager}{ServiceManager}}\ \&service\_manager)\ :\ service\_manager\_(service\_manager)\ \{\ \}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classController_ac0904fb6ee97c61d74b909db71e3a3fa}{login}}(std::string\ username,\ std::string\ password)\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ user\ =\ service\_manager\_.get\_user\_service().find\_user(username,\ password);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (user\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ current\_user\_\ =\ user;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}*\ register\_user(std::string\ username,\ std::string\ password);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_to\_cart(\textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}\ *item)\ \{\ cart\_.\mbox{\hyperlink{classCart_a8a7403d775cc57f12199562789cfaf42}{add\_item}}(item);\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}*\ remove\_from\_cart(\textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}\ *item)\ \{\ \textcolor{keywordflow}{return}\ cart\_.\mbox{\hyperlink{classCart_ac645770453c4f0a9bffa02677178533d}{remove\_item}}(item);\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classOrder}{Order}}*\ create\_order()\ noexcept;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ submit\_order();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Admin\ actions}}
+\DoxyCodeLine{00038\ \ \ \ \ const\ \mbox{\hyperlink{classItem}{Item}}*\ add\_item(const\ \mbox{\hyperlink{classItem}{Item}}\ \&item)\ \{\ \textcolor{keywordflow}{return}\ service\_manager\_.get\_item\_service().add\_item(item);\ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ remove\_item(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sku)\ \{\ service\_manager\_.get\_item\_service().remove\_item(sku);\ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}*\ add\_user(\textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}\ \&user)\ \{\ \textcolor{keywordflow}{return}\ service\_manager\_.get\_user\_service().add\_user(user);\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ remove\_user(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{\ service\_manager\_.get\_user\_service().remove\_user(\textcolor{keywordtype}{id});\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classServiceManager}{ServiceManager}}\&\ get\_service\_manager()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ service\_manager\_;\ \};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classOrder}{Order}}*\ get\_order()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \&order\_;\ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCart}{Cart}}\&\ get\_cart()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ cart\_;\ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}*\ get\_current\_user()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ current\_user\_;\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_logged\_in()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ current\_user\_\ !=\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{classServiceManager}{ServiceManager}}\ \&service\_manager\_;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}*\ current\_user\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{classCart}{Cart}}\ cart\_;}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{classOrder}{Order}}\ order\_;}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CONTROLLER\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,52 @@
+\doxysection{User\+Service Class Reference}
+\hypertarget{classUserService}{}\label{classUserService}\index{UserService@{UserService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classUserService_aa0e4cd4b82829fa98515caa3c2301280}\label{classUserService_aa0e4cd4b82829fa98515caa3c2301280} 
+{\bfseries User\+Service} (\mbox{\hyperlink{classUserRepository}{User\+Repository}} \&repo)
+\item 
+\Hypertarget{classUserService_aea1af90f885175bc11e631682caf2eb8}\label{classUserService_aea1af90f885175bc11e631682caf2eb8} 
+const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+user} (unsigned int id) const
+\item 
+\Hypertarget{classUserService_af25f188bf50d4640e5e4e86defb89370}\label{classUserService_af25f188bf50d4640e5e4e86defb89370} 
+const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} {\bfseries find\+\_\+user} (std\+::string username, std\+::string password) const
+\item 
+\Hypertarget{classUserService_a56eb573f6abe71625c055c0687b2c2c8}\label{classUserService_a56eb573f6abe71625c055c0687b2c2c8} 
+const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+user} (const \mbox{\hyperlink{classUser}{User}} \&user)
+\item 
+\Hypertarget{classUserService_a34ebe9520feb356be8612c1861ed8857}\label{classUserService_a34ebe9520feb356be8612c1861ed8857} 
+const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} {\bfseries update\+\_\+user} (const \mbox{\hyperlink{classUser}{User}} \&user)
+\item 
+\Hypertarget{classUserService_a73ece253b4e648118a45e69b6a930319}\label{classUserService_a73ece253b4e648118a45e69b6a930319} 
+void {\bfseries remove\+\_\+user} (unsigned int id)
+\item 
+\Hypertarget{classUserService_a70dc1c00ab8e0bd848682c3c5c4ee496}\label{classUserService_a70dc1c00ab8e0bd848682c3c5c4ee496} 
+const std\+::vector$<$ const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+\_\+users} ()
+\item 
+unsigned int \mbox{\hyperlink{classUserService_a5ae05977c99082bb3980c360ad90b9e4}{get\+\_\+new\+\_\+id}} () const
+\begin{DoxyCompactList}\small\item\em Get a new, unused ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classUserService_a5ae05977c99082bb3980c360ad90b9e4}\label{classUserService_a5ae05977c99082bb3980c360ad90b9e4} 
+\index{UserService@{UserService}!get\_new\_id@{get\_new\_id}}
+\index{get\_new\_id@{get\_new\_id}!UserService@{UserService}}
+\doxysubsubsection{\texorpdfstring{get\_new\_id()}{get\_new\_id()}}
+{\footnotesize\ttfamily unsigned int User\+Service\+::get\+\_\+new\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get a new, unused ID. 
+
+ID are guaranteed to be unused at the time of calling. Subsequent calls without adding a new \doxylink{classUser}{User} with the returned ID are not guaranteed to be unused.
+
+\begin{DoxyReturn}{Returns}
+Unused user ID 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+User\+Service.\+h\item 
+User\+Service.\+cpp\end{DoxyCompactItemize}

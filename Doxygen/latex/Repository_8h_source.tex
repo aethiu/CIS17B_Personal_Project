@@ -1,0 +1,109 @@
+\doxysection{Repository.\+h}
+\hypertarget{Repository_8h_source}{}\label{Repository_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ Repository.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ May\ 5,\ 2024,\ 5:57 PM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ REPOSITORY\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ REPOSITORY\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <exception>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classdb__connection__exception}{db\_connection\_exception}}\ :\ \textcolor{keyword}{public}\ std::exception\ \{}
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ what()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error\ connecting\ to\ database.\(\backslash\)n"{}};}
+\DoxyCodeLine{00020\ \ \ \}}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ K,\ \textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRepository}{Repository}}\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{classRepository}{Repository}}()\ =\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{classRepository}{Repository}}(std::string\ \ db\_filename)\ :\ db\_filename\_(std::move(db\_filename))\ \{\ \}}
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classRepository}{\string~Repository}}()\ =\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ T*\ \mbox{\hyperlink{classRepository_aab7f9899da2354d82df9b78bc50f937e}{create\_row}}(\textcolor{keyword}{const}\ K\ \&key,\ \textcolor{keyword}{const}\ T\ \&value)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ table\_.insert(\{key,\ value\});}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classRepository_a7d2f740df9248c0eb8587d9f394568ed}{save}}();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{return}\ \&table\_[key];}
+\DoxyCodeLine{00045\ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ T*\ \mbox{\hyperlink{classRepository_a508c73896c2f47e3b05e26d531063673}{read\_row}}(\textcolor{keyword}{const}\ K\ \&key)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ table\_.find(key);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ it\ ==\ table\_.end()\ ?\ nullptr\ :\ \&(it-\/>second);}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{virtual}\ std::vector<const\ T*>\ \mbox{\hyperlink{classRepository_ad2e4e9fbe49613e8387659bdc7222ec4}{read\_table}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00062\ \ \ \ \ std::vector<const\ T*>\ table;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [key,\ value]\ :\ table\_)\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ table.push\_back(\&value);}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{return}\ table;}
+\DoxyCodeLine{00067\ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ T*\ \mbox{\hyperlink{classRepository_ae026d1b7123239533050a7d2c884841b}{update\_row}}(\textcolor{keyword}{const}\ K\ \&key,\ \textcolor{keyword}{const}\ T\ \&value)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(value\ ==\ key))\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}\ \textcolor{comment}{//\ operator==\ is\ assumed\ to\ be\ implemented\ but\ not\ !=}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (table\_.count(key)\ ==\ 0)\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00082\ \ \ \ \ table\_[key]\ =\ value;}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{classRepository_a7d2f740df9248c0eb8587d9f394568ed}{save}}();}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{return}\ \&table\_[key];}
+\DoxyCodeLine{00085\ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRepository_a9be51af6584661507a80cb04448182b4}{delete\_row}}(\textcolor{keyword}{const}\ K\ \&key)\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ table\_.erase(key);}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{classRepository_a7d2f740df9248c0eb8587d9f394568ed}{save}}();}
+\DoxyCodeLine{00096\ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00099\ \ \ std::string\ db\_filename\_;}
+\DoxyCodeLine{00100\ \ \ std::unordered\_map<K,\ T>\ table\_;\ \textcolor{comment}{//\ Local\ storage\ of\ binary\ file\ database\ table}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00108\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRepository_aba8f2ee270fc6940859358783a5128e9}{load\_row}}(std::ifstream\ \&db)\ =0;}
+\DoxyCodeLine{00115\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRepository_a8171298901b508467845001465b95bef}{save\_row}}(std::ofstream\ \&db,\ \textcolor{keyword}{const}\ T\&)\ \textcolor{keyword}{const}\ =0;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRepository_a2314bf2689ded6b5cce778066fb317a7}{load}}()\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ std::ifstream\ db(db\_filename\_,\ std::ios::out\ |\ std::ios::binary);}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (!db)\ \{\ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classdb__connection__exception}{db\_connection\_exception}};\ \}}
+\DoxyCodeLine{00121\ \ \ \ \ db.seekg(0,\ std::ios::beg);}
+\DoxyCodeLine{00122\ \ \ \ \ table\_.clear();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Read\ header}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ num\_rows;}
+\DoxyCodeLine{00126\ \ \ \ \ db.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&num\_rows),\ \textcolor{keyword}{sizeof}(num\_rows));}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{//\ Read\ rows}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i=0;\ i<num\_rows;\ i++)\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \mbox{\hyperlink{classRepository_aba8f2ee270fc6940859358783a5128e9}{load\_row}}(db);}
+\DoxyCodeLine{00131\ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ db.close();}
+\DoxyCodeLine{00133\ \ \ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00136\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRepository_a7d2f740df9248c0eb8587d9f394568ed}{save}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00137\ \ \ \ \ std::ofstream\ db(db\_filename\_,\ std::ios::out\ |\ std::ios::binary);}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordflow}{if}\ (!db)\ \{\ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classdb__connection__exception}{db\_connection\_exception}};\ \}}
+\DoxyCodeLine{00139\ \ \ \ \ db.seekp(0,\ std::ios::beg);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ Write\ header}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ num\_rows\ =\ table\_.size();}
+\DoxyCodeLine{00143\ \ \ \ \ db.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&num\_rows),\ \textcolor{keyword}{sizeof}(num\_rows));}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ Write\ rows}}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [\_,\ row]\ :\ table\_)\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \mbox{\hyperlink{classRepository_a8171298901b508467845001465b95bef}{save\_row}}(db,\ row);}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ db.close();}
+\DoxyCodeLine{00150\ \ \ \}}
+\DoxyCodeLine{00151\ \};}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ REPOSITORY\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00154\ }
+
+\end{DoxyCode}

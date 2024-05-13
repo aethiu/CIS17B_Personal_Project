@@ -1,0 +1,48 @@
+\doxysection{Cart.\+h}
+\hypertarget{Cart_8h_source}{}\label{Cart_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ Cart.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ April\ 26,\ 2024,\ 10:59 AM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CART\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CART\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Item.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCart}{Cart}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCart_a8a7403d775cc57f12199562789cfaf42}{add\_item}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}*);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}*\ \mbox{\hyperlink{classCart_ac645770453c4f0a9bffa02677178533d}{remove\_item}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}*\ item);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classCart_a0d66dea1f7504e5979b17e510290100f}{set\_quantity}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}*\ item,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ quantity);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classCart_a0d66dea1f7504e5979b17e510290100f}{set\_quantity}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sku,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ quantity);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classCart_ae2231302ca7b7a216b5ec6c4a70be54c}{get\_quantity}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}*\ item)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCart_ae2231302ca7b7a216b5ec6c4a70be54c}{get\_quantity}}(item-\/>get\_sku());\ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classCart_ae2231302ca7b7a216b5ec6c4a70be54c}{get\_quantity}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sku)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{const}\ std::map<unsigned\ int,\ unsigned\ long>\&\ \mbox{\hyperlink{classCart_ae046dd0e56b3d926d69df0e64c5b64d1}{get\_quantities}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ quantities\_;\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<const\ Item*>\&\ \mbox{\hyperlink{classCart_a915a70178d7a5f3ed02d9f0d5ab6e392}{get\_items}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ items\_;\ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classCart_a2d3c6585c81a1ecadb103d667857a1c8}{get\_num\_items}}()\ const\ noexcept;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{float}\ get\_subtotal()\ const\ noexcept;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ private:}
+\DoxyCodeLine{00072\ \ \ std::vector<const\ \mbox{\hyperlink{classItem}{Item}}*>\ items\_;}
+\DoxyCodeLine{00073\ \ \ \textcolor{comment}{//\ Keep\ separate\ quantity\ map\ because\ PHP\ maps\ can't\ use\ const\ Item*\ pointers\ as\ keys\ like\ C++}}
+\DoxyCodeLine{00074\ \ \ std::map<\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}>\ quantities\_;}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CART\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00078\ }
+
+\end{DoxyCode}

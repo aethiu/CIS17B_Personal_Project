@@ -1,0 +1,202 @@
+\doxysection{Repository\texorpdfstring{$<$}{<} K, T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classRepository}{}\label{classRepository}\index{Repository$<$ K, T $>$@{Repository$<$ K, T $>$}}
+
+
+\doxylink{classRepository}{Repository} represents database table data and handles reading and writing to a binary file.  
+
+
+
+
+{\ttfamily \#include $<$Repository.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRepository_a6d07ac2039e8dbcc97a09b9b6e46d877}\label{classRepository_a6d07ac2039e8dbcc97a09b9b6e46d877} 
+{\bfseries Repository} (std\+::string db\+\_\+filename)
+\item 
+virtual const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository_aab7f9899da2354d82df9b78bc50f937e}{create\+\_\+row}} (const K \&key, const T \&value)
+\begin{DoxyCompactList}\small\item\em Create a new row in the table. \end{DoxyCompactList}\item 
+virtual const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository_a508c73896c2f47e3b05e26d531063673}{read\+\_\+row}} (const K \&key) const
+\begin{DoxyCompactList}\small\item\em Retrieve a single row. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ const T \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classRepository_ad2e4e9fbe49613e8387659bdc7222ec4}{read\+\_\+table}} () const
+\begin{DoxyCompactList}\small\item\em Get all data in a table. \end{DoxyCompactList}\item 
+virtual const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository_ae026d1b7123239533050a7d2c884841b}{update\+\_\+row}} (const K \&key, const T \&value)
+\begin{DoxyCompactList}\small\item\em Update table row at key with data from value member variables. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classRepository_a9be51af6584661507a80cb04448182b4}{delete\+\_\+row}} (const K \&key)
+\begin{DoxyCompactList}\small\item\em Deletes a row from the table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classRepository_aba8f2ee270fc6940859358783a5128e9}{load\+\_\+row}} (std\+::ifstream \&db)=0
+\begin{DoxyCompactList}\small\item\em Inserts a row into the table from a binary file. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classRepository_a8171298901b508467845001465b95bef}{save\+\_\+row}} (std\+::ofstream \&db, const T \&) const =0
+\begin{DoxyCompactList}\small\item\em Writes a row from the table to a binary file. \end{DoxyCompactList}\item 
+\Hypertarget{classRepository_a2314bf2689ded6b5cce778066fb317a7}\label{classRepository_a2314bf2689ded6b5cce778066fb317a7} 
+void {\bfseries load} ()
+\begin{DoxyCompactList}\small\item\em Loads data from binary file into table storage. \end{DoxyCompactList}\item 
+\Hypertarget{classRepository_a7d2f740df9248c0eb8587d9f394568ed}\label{classRepository_a7d2f740df9248c0eb8587d9f394568ed} 
+void {\bfseries save} () const
+\begin{DoxyCompactList}\small\item\em Writes data to binary file from table storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRepository_a435f476e55c937c96899cf4a3ad3555a}\label{classRepository_a435f476e55c937c96899cf4a3ad3555a} 
+std\+::string {\bfseries db\+\_\+filename\+\_\+}
+\item 
+\Hypertarget{classRepository_a8a0f03880007704574d3224a4ba474db}\label{classRepository_a8a0f03880007704574d3224a4ba474db} 
+std\+::unordered\+\_\+map$<$ K, T $>$ {\bfseries table\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class K, class T$>$\newline
+class Repository$<$ K, T $>$}
+\doxylink{classRepository}{Repository} represents database table data and handles reading and writing to a binary file. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em K} & Primary key \\
+\hline
+{\em T} & Class representing row data \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRepository_aab7f9899da2354d82df9b78bc50f937e}\label{classRepository_aab7f9899da2354d82df9b78bc50f937e} 
+\index{Repository$<$ K, T $>$@{Repository$<$ K, T $>$}!create\_row@{create\_row}}
+\index{create\_row@{create\_row}!Repository$<$ K, T $>$@{Repository$<$ K, T $>$}}
+\doxysubsubsection{\texorpdfstring{create\_row()}{create\_row()}}
+{\footnotesize\ttfamily template$<$class K , class T $>$ \\
+virtual const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository}{Repository}}$<$ K, T $>$\+::create\+\_\+row (\begin{DoxyParamCaption}\item[{const K \&}]{key,  }\item[{const T \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Create a new row in the table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Primary key \\
+\hline
+{\em value} & Row object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to stored value 
+\end{DoxyReturn}
+\Hypertarget{classRepository_a9be51af6584661507a80cb04448182b4}\label{classRepository_a9be51af6584661507a80cb04448182b4} 
+\index{Repository$<$ K, T $>$@{Repository$<$ K, T $>$}!delete\_row@{delete\_row}}
+\index{delete\_row@{delete\_row}!Repository$<$ K, T $>$@{Repository$<$ K, T $>$}}
+\doxysubsubsection{\texorpdfstring{delete\_row()}{delete\_row()}}
+{\footnotesize\ttfamily template$<$class K , class T $>$ \\
+virtual void \mbox{\hyperlink{classRepository}{Repository}}$<$ K, T $>$\+::delete\+\_\+row (\begin{DoxyParamCaption}\item[{const K \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Deletes a row from the table. 
+
+Pointers to the deleted value are invalid once this function is called.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Primary key \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRepository_aba8f2ee270fc6940859358783a5128e9}\label{classRepository_aba8f2ee270fc6940859358783a5128e9} 
+\index{Repository$<$ K, T $>$@{Repository$<$ K, T $>$}!load\_row@{load\_row}}
+\index{load\_row@{load\_row}!Repository$<$ K, T $>$@{Repository$<$ K, T $>$}}
+\doxysubsubsection{\texorpdfstring{load\_row()}{load\_row()}}
+{\footnotesize\ttfamily template$<$class K , class T $>$ \\
+virtual void \mbox{\hyperlink{classRepository}{Repository}}$<$ K, T $>$\+::load\+\_\+row (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{db }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Inserts a row into the table from a binary file. 
+
+Subclasses of Repository$<$$>$ are required to implement this function to deserialize and emplace a single object into the table storage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Database binary file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRepository_a508c73896c2f47e3b05e26d531063673}\label{classRepository_a508c73896c2f47e3b05e26d531063673} 
+\index{Repository$<$ K, T $>$@{Repository$<$ K, T $>$}!read\_row@{read\_row}}
+\index{read\_row@{read\_row}!Repository$<$ K, T $>$@{Repository$<$ K, T $>$}}
+\doxysubsubsection{\texorpdfstring{read\_row()}{read\_row()}}
+{\footnotesize\ttfamily template$<$class K , class T $>$ \\
+virtual const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository}{Repository}}$<$ K, T $>$\+::read\+\_\+row (\begin{DoxyParamCaption}\item[{const K \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Retrieve a single row. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Primary key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to stored row object or nullptr if no row matches the primary key 
+\end{DoxyReturn}
+\Hypertarget{classRepository_ad2e4e9fbe49613e8387659bdc7222ec4}\label{classRepository_ad2e4e9fbe49613e8387659bdc7222ec4} 
+\index{Repository$<$ K, T $>$@{Repository$<$ K, T $>$}!read\_table@{read\_table}}
+\index{read\_table@{read\_table}!Repository$<$ K, T $>$@{Repository$<$ K, T $>$}}
+\doxysubsubsection{\texorpdfstring{read\_table()}{read\_table()}}
+{\footnotesize\ttfamily template$<$class K , class T $>$ \\
+virtual std\+::vector$<$ const T \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classRepository}{Repository}}$<$ K, T $>$\+::read\+\_\+table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get all data in a table. 
+
+\begin{DoxyReturn}{Returns}
+vector of pointers to row objects 
+\end{DoxyReturn}
+\Hypertarget{classRepository_a8171298901b508467845001465b95bef}\label{classRepository_a8171298901b508467845001465b95bef} 
+\index{Repository$<$ K, T $>$@{Repository$<$ K, T $>$}!save\_row@{save\_row}}
+\index{save\_row@{save\_row}!Repository$<$ K, T $>$@{Repository$<$ K, T $>$}}
+\doxysubsubsection{\texorpdfstring{save\_row()}{save\_row()}}
+{\footnotesize\ttfamily template$<$class K , class T $>$ \\
+virtual void \mbox{\hyperlink{classRepository}{Repository}}$<$ K, T $>$\+::save\+\_\+row (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{db,  }\item[{const T \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Writes a row from the table to a binary file. 
+
+Subclasses of Repository$<$$>$ are required to implement this function to serialize objects to the binary file database.
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Database binary file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRepository_ae026d1b7123239533050a7d2c884841b}\label{classRepository_ae026d1b7123239533050a7d2c884841b} 
+\index{Repository$<$ K, T $>$@{Repository$<$ K, T $>$}!update\_row@{update\_row}}
+\index{update\_row@{update\_row}!Repository$<$ K, T $>$@{Repository$<$ K, T $>$}}
+\doxysubsubsection{\texorpdfstring{update\_row()}{update\_row()}}
+{\footnotesize\ttfamily template$<$class K , class T $>$ \\
+virtual const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository}{Repository}}$<$ K, T $>$\+::update\+\_\+row (\begin{DoxyParamCaption}\item[{const K \&}]{key,  }\item[{const T \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Update table row at key with data from value member variables. 
+
+Changing a value\textquotesingle{}s key member variable does not change the key in the \doxylink{classRepository}{Repository}\textquotesingle{}s private table. If value and key comparison fails, the function exits without attempting to update and returns nullptr. To change a value\textquotesingle{}s key, create a new row with \doxylink{classRepository_aab7f9899da2354d82df9b78bc50f937e}{Repository\+::create\+\_\+row} then delete the old row with \doxylink{classRepository_a9be51af6584661507a80cb04448182b4}{Repository\+::delete\+\_\+row}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Primary key \\
+\hline
+{\em value} & Row object with updated members \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to updated object or nullptr if no object was updated 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Repository.\+h\end{DoxyCompactItemize}

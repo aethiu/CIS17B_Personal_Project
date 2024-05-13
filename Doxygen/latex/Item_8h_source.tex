@@ -1,0 +1,53 @@
+\doxysection{Item.\+h}
+\hypertarget{Item_8h_source}{}\label{Item_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ Item.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ April\ 26,\ 2024,\ 10:36 AM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ ITEM\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ITEM\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classItem}{Item}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classItem}{Item}}()\ =\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classItem}{Item}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sku,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ quantity,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ price,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ std::string\ name,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ std::string\ description);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ get\_sku()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ sku\_;\ \};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ get\_quantity()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ quantity\_;\ \};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ get\_price()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ price\_;\ \};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ get\_name()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ name\_\ ;\}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ get\_description()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ description\_\ ;\}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ get\_img()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ img\_;\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_sku(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sku)\ \textcolor{keyword}{noexcept}\ \{\ sku\_\ =\ sku;\ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_quantity(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ quantity)\ \textcolor{keyword}{noexcept}\ \{\ quantity\_\ =\ quantity;\ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_price(\textcolor{keywordtype}{float}\ price)\ \textcolor{keyword}{noexcept}\ \{\ price\_\ =\ price;\ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_name(std::string\&\ name)\ \textcolor{keyword}{noexcept}\ \{\ name\_\ =\ name;\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_description(std::string\&\ description)\ \textcolor{keyword}{noexcept}\ \{\ description\_\ =\ description;\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_img(std::string\&\ img)\ \textcolor{keyword}{noexcept}\ \{\ img\_\ =\ img;\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ rhs)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ sku\_\ ==\ rhs;\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sku\_\ =\ 0;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ quantity\_\ =\ 0;}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{float}\ price\_\ =\ 0.0f;}
+\DoxyCodeLine{00042\ \ \ \ \ std::string\ name\_;}
+\DoxyCodeLine{00043\ \ \ \ \ std::string\ description\_;}
+\DoxyCodeLine{00044\ \ \ \ \ std::string\ img\_;}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ ITEM\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00048\ }
+
+\end{DoxyCode}

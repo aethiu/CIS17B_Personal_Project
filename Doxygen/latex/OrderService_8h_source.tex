@@ -1,0 +1,46 @@
+\doxysection{Order\+Service.\+h}
+\hypertarget{OrderService_8h_source}{}\label{OrderService_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ OrderService.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ May\ 6,\ 2024,\ 10:03 PM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ ORDERSERVICE\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ORDERSERVICE\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ItemService.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Order.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}OrderRepository.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classOrderService}{OrderService}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classOrderService}{OrderService}}(\mbox{\hyperlink{classOrderRepository}{OrderRepository}}\&\ repository,\ \mbox{\hyperlink{classItemService}{ItemService}}\ \&item\_service)}
+\DoxyCodeLine{00018\ \ \ \ \ :\ item\_service\_(item\_service)}
+\DoxyCodeLine{00019\ \ \ \ \ ,\ repo\_(repository)}
+\DoxyCodeLine{00020\ \ \ \ \ \{\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classOrderService_a26b239dce4a5b3dd7590a5c7d0b84c04}{get\_tax\_rate}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ tax\_rate\_;\ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classOrderService_a77ba52cd5860461ad33ad9b3a276c99a}{get\_shipping\_cost}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ shipping\_cost\_;\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classOrder}{Order}}\ create\_order(\textcolor{keyword}{const}\ \mbox{\hyperlink{classUser}{User}}\&,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCart}{Cart}}\&);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ Order::OrderNum\ get\_new\_order\_num()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classOrder}{Order}}*\ submit\_order(\textcolor{keyword}{const}\ \mbox{\hyperlink{classOrder}{Order}}\&);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ tax\_rate\_\ =\ 0.07f;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ shipping\_cost\_\ =\ 10.00f;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classOrderRepository}{OrderRepository}}\&\ repo\_;}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classItemService}{ItemService}}\&\ item\_service\_;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ ORDERSERVICE\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00043\ }
+
+\end{DoxyCode}

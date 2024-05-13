@@ -1,0 +1,53 @@
+\doxysection{User\+Repository Class Reference}
+\hypertarget{classUserRepository}{}\label{classUserRepository}\index{UserRepository@{UserRepository}}
+Inheritance diagram for User\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUserRepository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classUserRepository_aeb9327ea17539ec70a19df82fee82725}\label{classUserRepository_aeb9327ea17539ec70a19df82fee82725} 
+{\bfseries User\+Repository} (std\+::string db\+\_\+filename)
+\item 
+\Hypertarget{classUserRepository_ac6e34244ef1ed1b912668e56b305acdc}\label{classUserRepository_ac6e34244ef1ed1b912668e56b305acdc} 
+const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} {\bfseries find\+\_\+user} (const std\+::string \&username, const std\+::string \&password) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRepository}{Repository$<$ unsigned int, User $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Repository} (std\+::string db\+\_\+filename)
+\item 
+virtual const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository_aab7f9899da2354d82df9b78bc50f937e}{create\+\_\+row}} (const unsigned int \&key, const \mbox{\hyperlink{classUser}{User}} \&value)
+\begin{DoxyCompactList}\small\item\em Create a new row in the table. \end{DoxyCompactList}\item 
+virtual const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository_a508c73896c2f47e3b05e26d531063673}{read\+\_\+row}} (const unsigned int \&key) const
+\begin{DoxyCompactList}\small\item\em Retrieve a single row. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classRepository_ad2e4e9fbe49613e8387659bdc7222ec4}{read\+\_\+table}} () const
+\begin{DoxyCompactList}\small\item\em Get all data in a table. \end{DoxyCompactList}\item 
+virtual const \mbox{\hyperlink{classUser}{User}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRepository_ae026d1b7123239533050a7d2c884841b}{update\+\_\+row}} (const unsigned int \&key, const \mbox{\hyperlink{classUser}{User}} \&value)
+\begin{DoxyCompactList}\small\item\em Update table row at key with data from value member variables. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classRepository_a9be51af6584661507a80cb04448182b4}{delete\+\_\+row}} (const unsigned int \&key)
+\begin{DoxyCompactList}\small\item\em Deletes a row from the table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classRepository}{Repository$<$ unsigned int, User $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries load} ()
+\begin{DoxyCompactList}\small\item\em Loads data from binary file into table storage. \end{DoxyCompactList}\item 
+void {\bfseries save} () const
+\begin{DoxyCompactList}\small\item\em Writes data to binary file from table storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classRepository}{Repository$<$ unsigned int, User $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries db\+\_\+filename\+\_\+}
+\item 
+std\+::unordered\+\_\+map$<$ unsigned int, \mbox{\hyperlink{classUser}{User}} $>$ {\bfseries table\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+User\+Repository.\+h\item 
+User\+Repository.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,33 @@
+\doxysection{Item\+Repository.\+h}
+\hypertarget{ItemRepository_8h_source}{}\label{ItemRepository_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ File:\ \ \ ItemRepository.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Author:\ Theopolis\ Armstrong}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Created\ on\ May\ 5,\ 2024,\ 11:52 AM}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ ITEMREPOSITORY\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ITEMREPOSITORY\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Item.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Repository.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classItemRepository}{ItemRepository}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRepository}{Repository}}<unsigned\ long,\ Item>\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{classItemRepository}{ItemRepository}}()\ =\textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{classItemRepository}{ItemRepository}}(std::string\ db\_filename)\ :\ \mbox{\hyperlink{classRepository}{Repository<unsigned\ long,\ Item>}}(std::move(db\_filename))\ \{\ \mbox{\hyperlink{classRepository_a2314bf2689ded6b5cce778066fb317a7}{load}}();\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{void}\ load\_row(std::ifstream\&)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{void}\ save\_row(std::ofstream\&,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classItem}{Item}}\&)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ ITEMREPOSITORY\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00028\ }
+
+\end{DoxyCode}
